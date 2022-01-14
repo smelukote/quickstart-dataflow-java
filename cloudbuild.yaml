@@ -14,8 +14,8 @@ artifacts:
     paths:
     - "${_CLASS}"
 
-substitutions:
-  _DESTINATION_BUCKET: quickstart-dataflow-smdata2022
-  _SOURCE_FILES: /java/com/bayer/gcde/src
+# substitutions:
+#   _DESTINATION_BUCKET: quickstart-dataflow-smdata2022
+#   _SOURCE_FILES: /java/com/bayer/gcde/src
 options:
   logging: CLOUD_LOGGING_ONLY
