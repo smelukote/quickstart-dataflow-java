@@ -8,6 +8,11 @@ steps:
 
 - name: gcr.io/cloud-builders/mvn
   args: ['package', '-Dmaven.test.skip=true', '-Dcheckstyle.skip']
+artifacts:
+  objects:
+    location: "gs://quickstart-dataflow-smdata2022/smdata2022-temp"
+    paths:
+    - "${_CLASS}"
 
 substitutions:
   _DESTINATION_BUCKET: quickstart-dataflow-smdata2022
