@@ -60,10 +60,6 @@
           <version>2.22.1</version>
         </plugin>
         <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.0.2</version>
-        </plugin>
-        <plugin>
           <artifactId>maven-install-plugin</artifactId>
           <version>2.5.2</version>
         </plugin>
@@ -90,7 +86,7 @@
               <manifest>
                 <addClasspath>true</addClasspath>
                 <classpathPrefix>lib/</classpathPrefix>
-                 <mainClass>com/bayer/gcde/App</mainClass>
+                 <mainClass>com/example/demo/App</mainClass>
               </manifest>
             </archive>
           </configuration>
