@@ -60,6 +60,20 @@ import org.apache.beam.sdk.values.PCollectionTuple;
 import org.apache.beam.sdk.values.TupleTag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.io.FileReader;
+import java.util.Iterator;
+import java.util.Map;
+import org.json.*;
+import java.lang.reflect.Type;
+import com.google.gson.reflect.TypeToken;
+import org.json.simple.*;
+import com.google.gson.*;
+import com.google.gson.Gson;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import com.google.cloud.storage.*;
+
 
 /**
  * The {@link PubSubToBigQuery} pipeline is a streaming pipeline which ingests data in JSON format
