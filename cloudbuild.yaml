@@ -1,4 +1,4 @@
 steps:
   # Build the application with maven
   - name: 'gcr.io/cloud-builders/mvn'
-    args: ['clean', 'deploy']
+    args: ['clean', 'install','package']
