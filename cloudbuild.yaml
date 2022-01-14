@@ -1,4 +1,32 @@
 steps:
-  # Build the application with maven
-  - name: 'gcr.io/cloud-builders/mvn'
-    args: ['clean', 'install','package']
+  - id: "get build number"
+    name: gcr.io/cloud-builders/git
+    dir: 'cloudbuild-dataflow-demo/streaming'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        git rev-parse --short HEAD > _BUILDNUMBER
+    waitFor: ['-']
+
+  - id: "build and submit the dataflow job"
+    name: maven:3.6.0-jdk-11-slim
+    dir: 'cloudbuild-dataflow-demo/streaming'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        buildNumber=$(cat _BUILDNUMBER)
+        echo "Build Number is ${buildNumber}"
+        ./submit.sh DataflowDemoPipeline \
+          --project=smdata2022 \
+          --stagingLocation=gs://quickstart-dataflow-smdata2022/staging \
+          --gcpTempLocation=gs://quickstart-dataflow-smdata2022/temp/ \
+          --runner=DataflowRunner \
+          --autoscalingAlgorithm=THROUGHPUT_BASED \
+          --maxNumWorkers=3 \
+          --jobName=demo \
+          --buildNumber=${buildNumber} \
+          --subscription=dataflow_demo_subscription \
+          --region=us-central1
+    waitFor: ['get build number']
