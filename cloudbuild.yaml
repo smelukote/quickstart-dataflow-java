@@ -8,3 +8,32 @@ steps:
 
 - name: gcr.io/cloud-builders/mvn
   args: ['package', '-Dmaven.test.skip=true', '-Dcheckstyle.skip']
+  #Fifth step compiles and runs the packaged java file
+# - name: gcr.io/cloud-builders/mvn
+#   args: [compile,
+#   exec:java,
+#   -Dexec.mainClass=com.bayer.gcde.BigQueryToPubsubParameter,
+#   "-Dexec.args= \
+#   --project=bcs-global-comm-data-env-dev \
+#   --jobName=p08-account-load-manual-1000record \
+#   --numWorkers=1 \
+#   --maxNumWorkers=3 \
+#   --region=us-central1 \
+#   --subnetwork=https://www.googleapis.com/compute/v1/projects/bcs-csw-vpc-host/regions/us-central1/subnetworks/bcs-global-comm-data-env-dev-dataflow \
+#   --network=projects/bcs-csw-vpc-host/global/networks/csw \
+#   --stagingLocation=gs://dataflow-staging-us-central1-1090792078132-gcde-eu/bqview_to_pubsub \
+#   --tempLocation=gs://dataflow-staging-us-central1-1090792078132-gcde-eu/temp/123 \
+#   --runner=DataflowRunner \
+#   --outputTopicFail=projects/bcs-global-comm-data-env-dev/topics/LandingToReltioAccount-Failure \
+#   --projectName=bcs-global-comm-data-env-dev \
+#   --datasetName=csw_stage_t \
+#   --tableName=stage_br_account \
+#   --controlTableName=DQ_Ctrl_Tbl \ 
+#   --bucketName=dataextracts-gcde-eu \
+#   --blobName=key_value_contact.json"]
+substitutions:
+  _DESTINATION_BUCKET: demo_inputfiles-gcde-eu
+  _SOURCE_FILES: java/com/bayer/gcde/src/
+
+options:
+  logging: CLOUD_LOGGING_ONLY
