@@ -12,7 +12,7 @@ artifacts:
   objects:
     location: "gs://quickstart-dataflow-smdata2022/smdata2022-temp"
     paths:
-    - "gs://quickstart-dataflow-smdata2022/smdata2022-temp"
+    - "smdata2022-temp"
 
 # substitutions:
 #   _DESTINATION_BUCKET: quickstart-dataflow-smdata2022
