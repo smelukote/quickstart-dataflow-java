@@ -1,36 +1,10 @@
-#!/usr/bin/env bash
+steps:
 
-function deployDataflow() {
-  mainClass="$1"
-  properties="${@:2}"
-  echo "running main class $mainClass"
-  echo "the job properties are $properties"
-  mvn compile exec:java \
-    -Dexec.mainClass="$mainClass" \
-    -Dexec.args="$properties"
-}
+- name: gcr.io/cloud-builders/mvn
+  args: ['-Dproject.build.sourceEncoding=UTF-8', '-Dproject.reporting.outputEncoding=UTF-8, 'clean']
 
-function updateOrCreate() {
-  deployDataflow "$1" "${@:2}" "--update"
-  flag=$?
+- name: gcr.io/cloud-builders/mvn
+  args: ['install', '-Dmaven.test.skip=true', '-dcheckstyle=skip']
 
-  if [ "$flag" -ne 0 ]; then
-    echo "The job doesn't exist. Creating one..."
-    deployDataflow "$1" "${@:2}"
-  fi
-  
-  echo "Deployment is done!"
-}
-
-updateOrCreate "$@"
-
-public interface DemoPipelineOptions extends DataflowPipelineOptions {
-    @Description("Subscription name")
-    @Default.String("dataflow_subscription")
-    String getSubscription();
-    void setSubscription(String subscription);
-
-    @Description("Build number")
-    String getBuildNumber();
-    void setBuildNumber(String buildNumber);
-}
+- name: gcr.io/cloud-builders/mvn
+  args: ['package', '-Dmaven.test.skip=true', '-dcheckstyle=skip']
