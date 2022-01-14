@@ -12,25 +12,23 @@ steps:
 - name: gcr.io/cloud-builders/mvn
   args: [compile,
    exec:java,
-   -Dexec.mainClass=com.example.demo.BigQueryToPubsubParameter,
-   "-Dexec.args= \
-   --project=smdata2022 \
-   --jobName=myjob \
-   --numWorkers=1 \
-   --maxNumWorkers=3 \
-   --region=us-central1 \
-   --subnetwork=default \
-   --network=default \
-   --stagingLocation=gs://smdata2022/staging \
-   --tempLocation=gs://smdata2022/temp \
-   --runner=DataflowRunner \
-   --outputTopicFail=projects/smdata2022/topics/mytopic \
-   --projectName=smdata2022 \
-   --datasetName=mypubsub \
-   --tableName=mypubsub_table"]
-  # --controlTableName=DQ_Ctrl_Tbl \ 
-  # --bucketName=dextracks-pubsub-smdata2022 \
-  # --blobName=key_value_contact.json"]
+   -Dexec.mainClass=com.example.demo.PubSubToBigQuery \
+   -Dexec.cleanupDaemonThreads=false \
+   -Dexec.args="" \
+    --project=smdata2022 \
+    --jobName=myjob \
+    --numWorkers=1 \
+    --maxNumWorkers=3 \
+    --region=us-central1 \
+    --subnetwork=default \
+    --network=default \
+    --stagingLocation=gs://smdata2022/staging \
+    --tempLocation=gs://smdata2022/temp \
+    --runner=DataflowRunner \
+    --project=smdata2022 \
+    --datasetName=mypubsub \
+    --tableName=mypubsub_table"]
+  
 substitutions:
   _DESTINATION_BUCKET: quickstart-dataflow-smdata2022
   _SOURCE_FILES: java/com/example/demo/
