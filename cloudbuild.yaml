@@ -1,4 +1,4 @@
-steps:
+teps:
   # Build the application with maven
   - name: 'gcr.io/cloud-builders/mvn'
     args: ['clean', 'deploy']
