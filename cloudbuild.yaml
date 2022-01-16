@@ -22,7 +22,7 @@ steps:
      --output=gs://quickstart-dataflow-smdata2022/samples/output \
      --gcpTempLocation=gs://quickstart-dataflow-smdata2022/temp \
      --runner=DataflowRunner \
-     --windowSize=2"
+     --windowSize=2"]
   
 substitutions:
   _DESTINATION_BUCKET: quickstart-dataflow-smdata2022
