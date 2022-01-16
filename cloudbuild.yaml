@@ -12,23 +12,17 @@ steps:
   #Fifth step compiles and runs the packaged java file
 - name: gcr.io/cloud-builders/mvn
   args: [compile,
-   exec:java,
-   -Dexec.mainClass=com.example.demo.PubSubToBigQuery \
+   exec:java \
+   -Dexec.mainClass=com.examples.pubsub.streaming.PubSubToGcs \
    -Dexec.cleanupDaemonThreads=false \
-   -Dexec.args="" \
-    --project=smdata2022 \
-    --jobName=myjob \
-    --numWorkers=1 \
-    --maxNumWorkers=3 \
-    --region=us-central1 \
-    --subnetwork=default \
-    --network=default \
-    --stagingLocation=gs://smdata2022/staging \
-    --tempLocation=gs://smdata2022/temp \
-    --runner=DataflowRunner \
-    --project=smdata2022 \
-    --datasetName=mypubsub \
-    --tableName=mypubsub_table"]
+   -Dexec.args=" \
+     --project=smdata2022 \
+     --region=us-central1 \
+     --inputTopic=projects/smdata2022/topics/mytopic \
+     --output=gs://quickstart-dataflow-smdata2022/samples/output \
+     --gcpTempLocation=gs://quickstart-dataflow-smdata2022/temp \
+     --runner=DataflowRunner \
+     --windowSize=2"
   
 substitutions:
   _DESTINATION_BUCKET: quickstart-dataflow-smdata2022
