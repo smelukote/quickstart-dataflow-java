@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.google.cloud.teleport.templates;
+package com.examples.pubsub;
 
 import static com.google.cloud.teleport.templates.TextToBigQueryStreaming.wrapBigQueryInsertError;
 

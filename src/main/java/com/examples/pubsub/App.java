@@ -1,4 +1,4 @@
-package com.bayer.gcde;
+package com.examples.pubsub;
 
 /**
  * Hello world!
