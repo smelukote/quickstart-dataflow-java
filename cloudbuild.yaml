@@ -23,11 +23,4 @@ steps:
      --gcpTempLocation=gs://quickstart-dataflow-smdata2022/temp \
      --runner=DataflowRunner \
      --windowSize=2"]
-  
-substitutions:
-  _DESTINATION_BUCKET: quickstart-dataflow-smdata2022
-  _SOURCE_FILES: java/com/example/demo/
-
-options:
-  logging: CLOUD_LOGGING_ONLY
-
+     

@@ -1,4 +1,1 @@
-/Users/sudarshanamelukote/quickstart-dataflow-java/src/main/java/com/examples/pubsub/PubSubToBigQuery.java
-/Users/sudarshanamelukote/quickstart-dataflow-java/src/main/java/com/examples/pubsub/App.java
-/Users/sudarshanamelukote/quickstart-dataflow-java/src/main/java/com/examples/pubsub/TextIOToBigQuery.java
 /Users/sudarshanamelukote/quickstart-dataflow-java/src/main/java/com/examples/pubsub/streaming/PubSubToGcs.java
