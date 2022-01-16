@@ -13,9 +13,10 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.example.demo;
+package com.examples.pubsub;
 
-import static com.example.demo.TextToBigQueryStreaming.wrapBigQueryInsertError;
+import static com.examples.pubsub.TextToBigQueryStreaming.wrapBigQueryInsertError;
+
 import java.io.*;
 import java.util.*;
 import com.google.api.services.bigquery.model.TableRow;

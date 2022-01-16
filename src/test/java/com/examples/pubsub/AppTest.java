@@ -1,4 +1,4 @@
-package com.bayer.gcde;
+package com.examples.pubsub;
 
 import static org.junit.Assert.assertTrue;
 
