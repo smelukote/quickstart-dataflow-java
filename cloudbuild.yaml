@@ -15,4 +15,4 @@ steps:
 
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/smdata2022/mypubsub', '.']
-  images: ['gcr.io/smdata2022/mypusub']
+images: ['gcr.io/smdata2022/mypusub']
