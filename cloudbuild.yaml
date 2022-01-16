@@ -12,4 +12,6 @@ steps:
   #Fifth step compiles and runs the packaged java file
 - name: gcr.io/cloud-builders/mvn
   args: ['compile', '-Dmaven.test.skip=true', '-Dcheckstyle.skip']
-   
+
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: [ 'app', 'deploy' ]
