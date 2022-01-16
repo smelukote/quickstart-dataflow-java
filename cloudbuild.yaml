@@ -10,6 +10,6 @@ steps:
   args: ['package', '-Dmaven.test.skip=true', '-Dcheckstyle.skip']
   
   #Fifth step compiles and runs the packaged java file
-# - name: 'gcr.io/cloud-builders/mvn'
-#   args: ['compile']
+- name: 'gcr.io/cloud-builders/mvn'
+  args: ['compile']
    
