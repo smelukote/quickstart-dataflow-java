@@ -1,117 +1,81 @@
-<?xml version="1.0" encoding="UTF-8"?>
+// Copyright 2019 Google Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+package com.examples.pubsub.streaming;
 
-  <groupId>com.example.demo</groupId>
-  <artifactId>quickstart-dataflow-java</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <name>quickstart-dataflow-java</name>
-  <description>Cloud Teleport is a collection of Apache piplines for common tasks, 
-    like data movement across databases or batch transoforms on random datasets</description>
+// [START pubsub_to_gcs]
 
- 
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+import java.io.IOException;
+import org.apache.beam.examples.common.WriteOneFilePerWindow;
+import org.apache.beam.sdk.Pipeline;
+import org.apache.beam.sdk.io.gcp.pubsub.PubsubIO;
+import org.apache.beam.sdk.options.Default;
+import org.apache.beam.sdk.options.Description;
+import org.apache.beam.sdk.options.PipelineOptions;
+import org.apache.beam.sdk.options.PipelineOptionsFactory;
+import org.apache.beam.sdk.options.StreamingOptions;
+import org.apache.beam.sdk.options.Validation.Required;
+import org.apache.beam.sdk.transforms.windowing.FixedWindows;
+import org.apache.beam.sdk.transforms.windowing.Window;
+import org.joda.time.Duration;
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
-  </properties>
+public class PubSubToGcs {
+  /*
+   * Define your own configuration options. Add your own arguments to be processed
+   * by the command-line parser, and specify default values for them.
+   */
+  public interface PubSubToGcsOptions extends PipelineOptions, StreamingOptions {
+    @Description("The Cloud Pub/Sub topic to read from.")
+    @Required
+    String getInputTopic();
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
+    void setInputTopic(String value);
 
-    <dependency>
-      <groupId>org.apache.beam</groupId>
-      <artifactId>beam-runners-google-cloud-dataflow-java</artifactId>
-      <version>2.35.0</version>
-      <scope>runtime</scope>
-    </dependency>
-  </dependencies>
+    @Description("Output file's window size in number of minutes.")
+    @Default.Integer(1)
+    Integer getWindowSize();
 
+    void setWindowSize(Integer value);
 
-  <build>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
-      <plugins>
-        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
-        <plugin>
-          <artifactId>maven-clean-plugin</artifactId>
-          <version>3.1.0</version>
-        </plugin>
-        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
-        <plugin>
-          <artifactId>maven-resources-plugin</artifactId>
-          <version>3.0.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.0</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.1</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-install-plugin</artifactId>
-          <version>2.5.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <version>2.8.2</version>
-        </plugin>
-        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
-        <plugin>
-          <artifactId>maven-site-plugin</artifactId>
-          <version>3.7.1</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>3.0.0</version>
-        </plugin>
+    @Description("Path of the output file including its filename prefix.")
+    @Required
+    String getOutput();
 
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.0.2</version>
-          <configuration>
-            <archive>
-              <manifest>
-                <addClasspath>true</addClasspath>
-                <classpathPrefix>lib/</classpathPrefix>
-                 <mainClass>com/example/demo/App</mainClass>
-              </manifest>
-            </archive>
-          </configuration>
-        </plugin>
+    void setOutput(String value);
+  }
 
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-dependency-plugin</artifactId>
-          <version>${maven-jar-plugin.version}</version>
-          <executions>
-            <execution>
-              <id>copy-dependencies</id>
-              <phase>package</phase>
-              <goals>
-                <goal>copy-dependencies</goal>
-              </goals>
-              <configuration>
-                  <outputDirectory>
-                     ${project.build.directory}/lib/
-                  </outputDirectory>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-  </build>
-</project>
+  public static void main(String[] args) throws IOException {
+    // The maximum number of shards when writing output.
+    int numShards = 1;
+
+    PubSubToGcsOptions options =
+        PipelineOptionsFactory.fromArgs(args).withValidation().as(PubSubToGcsOptions.class);
+
+    options.setStreaming(true);
+
+    Pipeline pipeline = Pipeline.create(options);
+
+    pipeline
+        // 1) Read string messages from a Pub/Sub topic.
+        .apply("Read PubSub Messages", PubsubIO.readStrings().fromTopic(options.getInputTopic()))
+        // 2) Group the messages into fixed-sized minute intervals.
+        .apply(Window.into(FixedWindows.of(Duration.standardMinutes(options.getWindowSize()))))
+        // 3) Write one file to GCS for every window of messages.
+        .apply("Write Files to GCS", new WriteOneFilePerWindow(options.getOutput(), numShards));
+
+    // Execute the pipeline and wait until it finishes running.
+    pipeline.run().waitUntilFinish();
+  }
+}
+// [END pubsub_to_gcs]
