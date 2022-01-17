@@ -1,0 +1,58 @@
+{
+  "name": "Cloud Bigtable to SequenceFile",
+  "description": "A pipeline which reads in Cloud Bigtable table and writes it to Google Cloud Storage in SequenceFile format.",
+  "parameters": [
+    {
+      "name": "bigtableProject",
+      "label": "Project ID",
+      "helpText": "The ID of the Google Cloud project of the Cloud Bigtable instance that you want to read data from",
+      "regexes": [
+        "^([a-z0-9\\.]+:)?[a-z0-9][a-z0-9-]{5,29}$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "bigtableInstanceId",
+      "label": "Instance ID",
+      "helpText": "The ID of the Cloud Bigtable instance that contains the table",
+      "regexes": [
+        "[a-z][a-z0-9\\-]+[a-z0-9]"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "bigtableTableId",
+      "label": "Table ID",
+      "helpText": "The ID of the Cloud Bigtable table to export",
+      "regexes": [
+        "[_a-zA-Z0-9][-_.a-zA-Z0-9]*"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "bigtableAppProfileId",
+      "label": "Application profile ID",
+      "helpText": "The ID of the Cloud Bigtable application profile to be used for the export",
+      "isOptional": true,
+      "regexes": [
+        "[_a-zA-Z0-9][-_.a-zA-Z0-9]*"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "destinationPath",
+      "label": "Destination path",
+      "helpText": "GCS path where data should be written. For example, \"gs://your-bucket/your-path/\"",
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+\\/$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "filenamePrefix",
+      "label": "SequenceFile prefix",
+      "helpText": "The prefix of the SequenceFile file name. For example, \"output-\"",
+      "paramType": "TEXT"
+    }
+  ]
+}

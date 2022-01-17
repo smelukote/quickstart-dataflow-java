@@ -1,0 +1,43 @@
+{
+  "name": "Cloud Spanner to Avro Files",
+  "description": "A pipeline to export a Cloud Spanner database to a set of Avro files in GCS.",
+  "parameters": [
+    {
+      "name": "instanceId",
+      "label": "Cloud Spanner instance id",
+      "helpText": "The instance id of the Cloud Spanner database that you want to export.",
+      "regexes": [
+        "[a-z][a-z0-9\\-]*[a-z0-9]"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "databaseId",
+      "label": "Cloud Spanner database id",
+      "helpText": "The database id of the Cloud Spanner database that you want to export.",
+      "regexes": [
+        "[a-z][a-z0-9_\\-]*[a-z0-9]"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "outputDir",
+      "label": "Cloud storage output directory",
+      "helpText": "The GCS path where the Avro files should be exported to. A new directory will be created under this path that contains the export.",
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "GCS_WRITE_FOLDER"
+    },
+    {
+      "name": "snapshotTime",
+      "label": "Snapshot time",
+      "helpText": "Specifies the snapshot time as RFC 3339 format in UTC time without the timezone offset(always ends in 'Z'). Ex-1990-12-31T23:59:59Z. https://cloud.google.com/spanner/docs/timestamp-bounds",
+      "isOptional": true,
+      "regexes": [
+        "^([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):(([0-9]{2})(\\.[0-9]+)?)Z$"
+      ],
+      "paramType": "TEXT"
+    }
+  ]
+}

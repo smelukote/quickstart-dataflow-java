@@ -1,0 +1,61 @@
+{
+  "name": "Cloud BigQuery to TFRecords",
+  "description": "A pipeline that reads rows from BigQuery and writes them as TFRecords in Cloud Storage. (NOTE: Nested BigQuery columns are currently not supported and should be unnested within the SQL query.)",
+  "parameters": [
+    {
+      "name": "readQuery",
+      "label": "Input SQL query",
+      "helpText": "SQL query in standard SQL to pull data from BigQuery",
+      "paramType": "TEXT"
+    },
+    {
+      "name": "outputDirectory",
+      "label": "Output GCS directory.",
+      "helpText": "GCS directory to store output TFRecord files. e.g: \"gs://your-bucket/your-path/\"",
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "GCS_WRITE_FOLDER"
+    },
+    {
+      "name": "outputSuffix",
+      "label": "The output suffix for TFRecord files",
+      "helpText": "File suffix to append to TFRecord files. Defaults to .tfrecord",
+      "isOptional": true,
+      "regexes": [
+        "^[A-Za-z_0-9.]*"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "trainingPercentage",
+      "label": "Percentage of data to be in the training set ",
+      "helpText": "Defaults to 1 or 100%. Should be decimal between 0 and 1 inclusive",
+      "isOptional": true,
+      "regexes": [
+        "(^\\.[1-9]*$)|(^[01]*)"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "testingPercentage",
+      "label": "Percentage of data to be in the testing set ",
+      "helpText": "Defaults to 0 or 0%. Should be decimal between 0 and 1 inclusive",
+      "isOptional": true,
+      "regexes": [
+        "(^\\.[1-9]*$)|(^[01]*)"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "validationPercentage",
+      "label": "Percentage of data to be in the validation set ",
+      "helpText": "Defaults to 0 or 0%. Should be decimal between 0 and 1 inclusive",
+      "isOptional": true,
+      "regexes": [
+        "(^\\.[1-9]*$)|(^[01]*)"
+      ],
+      "paramType": "TEXT"
+    }
+  ]
+}

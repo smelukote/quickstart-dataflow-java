@@ -1,0 +1,417 @@
+{
+  "clientRequestId" : "20200721043449034_5278",
+  "environment" : {
+    "dataset" : "bigquery.googleapis.com/cloud_dataflow",
+    "experiments" : [ ],
+    "sdkPipelineOptions" : {
+      "options" : {
+        "workerDiskType" : null,
+        "workerRegion" : null,
+        "cassandraKeyspace" : null,
+        "project" : "dataflow-templates",
+        "bigtableTableId" : null,
+        "dataflowWorkerJar" : null,
+        "overrideWindmillBinary" : null,
+        "zone" : null,
+        "workerMachineType" : null,
+        "cassandraTable" : null,
+        "gcpTempLocation" : "gs://dataflow-staging-us-central1-473832897378/temp/",
+        "numWorkers" : 0,
+        "runner" : "org.apache.beam.runners.dataflow.DataflowRunner",
+        "jobName" : "cassandratobigtable-dataflow0releaser-0721043448-524628e4",
+        "useGrpcForGcs" : false,
+        "defaultEnvironmentType" : null,
+        "optionsId" : 0,
+        "maxNumWorkers" : 0,
+        "splitLargeRows" : null,
+        "apiRootUrl" : "https://dataflow.googleapis.com/",
+        "stagingLocation" : "gs://dataflow-templates-libraries/2020-07-20-00_RC00",
+        "labels" : {
+          "goog-dataflow-provided-template-name" : "cassandra_to_cloud_bigtable",
+          "goog-dataflow-provided-template-version" : "2020-07-20-00_rc00",
+          "goog-dataflow-provided-template-type" : "legacy"
+        },
+        "dataflowKmsKey" : null,
+        "tempLocation" : "gs://dataflow-staging-us-central1-473832897378/temp/",
+        "cassandraPort" : null,
+        "enableStreamingEngine" : false,
+        "gcsUploadBufferSizeBytes" : null,
+        "subnetwork" : null,
+        "filesToStage" : [ "/export/hda3/borglet/remote_hdd_fs_dirs/0.rapid.runner-tg7wct7l-3lhr-rsun-5amq-qbv56jneofo5.dataflow-releaser.492111029833.14b334fb3717c109/mount/rapid/workflow/b4a47121-63b4-47d1-8bc9-0929013a961a/tmp/tmpsfwlewqc/teleport-all-bundled.jar" ],
+        "templateLocation" : "gs://dataflow-templates-staging/2020-07-20-00_RC00/Cassandra_To_Cloud_Bigtable",
+        "cassandraHosts" : null,
+        "bigtableProjectId" : null,
+        "rowKeySeparator" : null,
+        "dataflowEndpoint" : "",
+        "experiments" : null,
+        "defaultColumnFamily" : null,
+        "workerHarnessContainerImage" : "gcr.io/cloud-dataflow/v1beta3/IMAGE:beam-2.20.0",
+        "network" : null,
+        "streaming" : false,
+        "enableCloudDebugger" : false,
+        "credentialFactoryClass" : "org.apache.beam.sdk.extensions.gcp.auth.GcpCredentialFactory",
+        "googleApiTrace" : null,
+        "autoscalingAlgorithm" : null,
+        "defaultEnvironmentConfig" : null,
+        "appName" : "CassandraToBigtable",
+        "gcsPerformanceMetrics" : false,
+        "userAgent" : "Apache_Beam_SDK_for_Java/2.20.0(JDK_11_environment)",
+        "bigtableInstanceId" : null,
+        "serviceAccount" : null,
+        "pipelineUrl" : "gs://dataflow-templates-libraries/2020-07-20-00_RC00/pipeline-nbDSNr9U-SmfshRTJ-goRQ.pb",
+        "stagerClass" : "org.apache.beam.runners.dataflow.util.GcsStager",
+        "hdfsConfiguration" : null,
+        "stableUniqueNames" : "WARNING",
+        "saveProfilesToGcs" : null,
+        "numberOfWorkerHarnessThreads" : 0,
+        "pathValidatorClass" : "org.apache.beam.sdk.extensions.gcp.storage.GcsPathValidator",
+        "diskSizeGb" : 0
+      },
+      "display_data" : [ {
+        "namespace" : "org.apache.beam.sdk.options.PipelineOptions",
+        "key" : "jobName",
+        "type" : "STRING",
+        "value" : "cassandratobigtable-dataflow0releaser-0721043448-524628e4"
+      }, {
+        "namespace" : "org.apache.beam.sdk.options.PipelineOptions",
+        "key" : "tempLocation",
+        "type" : "STRING",
+        "value" : "gs://dataflow-staging-us-central1-473832897378/temp/"
+      }, {
+        "namespace" : "org.apache.beam.runners.dataflow.options.DataflowPipelineOptions",
+        "key" : "project",
+        "type" : "STRING",
+        "value" : "dataflow-templates"
+      }, {
+        "namespace" : "org.apache.beam.runners.dataflow.options.DataflowPipelineOptions",
+        "key" : "templateLocation",
+        "type" : "STRING",
+        "value" : "gs://dataflow-templates-staging/2020-07-20-00_RC00/Cassandra_To_Cloud_Bigtable"
+      }, {
+        "namespace" : "org.apache.beam.runners.dataflow.options.DataflowPipelineOptions",
+        "key" : "stagingLocation",
+        "type" : "STRING",
+        "value" : "gs://dataflow-templates-libraries/2020-07-20-00_RC00"
+      }, {
+        "namespace" : "org.apache.beam.sdk.options.PortablePipelineOptions",
+        "key" : "filesToStage",
+        "type" : "STRING",
+        "value" : "[/export/hda3/borglet/remote_hdd_fs_dirs/0.rapid.runner-tg7wct7l-3lhr-rsun-5amq-qbv56jneofo5.dataflow-releaser.492111029833.14b334fb3717c109/mount/rapid/workflow/b4a47121-63b4-47d1-8bc9-0929013a961a/tmp/tmpsfwlewqc/teleport-all-bundled.jar]"
+      }, {
+        "namespace" : "org.apache.beam.runners.dataflow.options.DataflowPipelineOptions",
+        "key" : "pipelineUrl",
+        "type" : "STRING",
+        "value" : "gs://dataflow-templates-libraries/2020-07-20-00_RC00/pipeline-nbDSNr9U-SmfshRTJ-goRQ.pb"
+      }, {
+        "namespace" : "org.apache.beam.runners.dataflow.options.DataflowPipelineOptions",
+        "key" : "labels",
+        "type" : "STRING",
+        "value" : "{goog-dataflow-provided-template-name=cassandra_to_cloud_bigtable, goog-dataflow-provided-template-version=2020-07-20-00_rc00, goog-dataflow-provided-template-type=legacy}"
+      }, {
+        "namespace" : "org.apache.beam.sdk.options.ApplicationNameOptions",
+        "key" : "appName",
+        "type" : "STRING",
+        "value" : "CassandraToBigtable"
+      }, {
+        "namespace" : "org.apache.beam.sdk.options.PipelineOptions",
+        "key" : "userAgent",
+        "type" : "STRING",
+        "value" : "Apache_Beam_SDK_for_Java/2.20.0(JDK_11_environment)"
+      }, {
+        "namespace" : "org.apache.beam.sdk.options.PipelineOptions",
+        "key" : "runner",
+        "type" : "JAVA_CLASS",
+        "value" : "org.apache.beam.runners.dataflow.DataflowRunner",
+        "shortValue" : "DataflowRunner"
+      }, {
+        "namespace" : "org.apache.beam.runners.dataflow.options.DataflowPipelineWorkerPoolOptions",
+        "key" : "filesToStage",
+        "type" : "STRING",
+        "value" : "[/export/hda3/borglet/remote_hdd_fs_dirs/0.rapid.runner-tg7wct7l-3lhr-rsun-5amq-qbv56jneofo5.dataflow-releaser.492111029833.14b334fb3717c109/mount/rapid/workflow/b4a47121-63b4-47d1-8bc9-0929013a961a/tmp/tmpsfwlewqc/teleport-all-bundled.jar]"
+      } ]
+    },
+    "tempStoragePrefix" : "storage.googleapis.com/dataflow-staging-us-central1-473832897378/temp/",
+    "userAgent" : {
+      "legacy.environment.major.version" : "7",
+      "java.vendor" : "Google Inc.",
+      "java.version" : "11.0.6",
+      "container.version" : "beam-2.20.0",
+      "os.arch" : "amd64",
+      "fnapi.environment.major.version" : "7",
+      "name" : "Apache Beam SDK for Java",
+      "os.name" : "Linux",
+      "version" : "2.20.0",
+      "os.version" : "4.15.0-smp-904.25.0.0"
+    },
+    "version" : {
+      "major" : "7",
+      "job_type" : "JAVA_BATCH_AUTOSCALING"
+    },
+    "workerPools" : [ {
+      "autoscalingSettings" : {
+        "maxNumWorkers" : 0
+      },
+      "numWorkers" : 0,
+      "packages" : [ {
+        "location" : "gs://dataflow-templates-libraries/2020-07-20-00_RC00/teleport-all-bundled-JeMKTC8iYbIWaoeTU9apaQ.jar",
+        "name" : "teleport-all-bundled-JeMKTC8iYbIWaoeTU9apaQ.jar"
+      } ],
+      "workerHarnessContainerImage" : "gcr.io/cloud-dataflow/v1beta3/beam-java11-batch:beam-2.20.0"
+    } ]
+  },
+  "labels" : {
+    "goog-dataflow-provided-template-name" : "cassandra_to_cloud_bigtable",
+    "goog-dataflow-provided-template-version" : "2020-07-20-00_rc00",
+    "goog-dataflow-provided-template-type" : "legacy"
+  },
+  "name" : "cassandratobigtable-dataflow0releaser-0721043448-524628e4",
+  "steps" : [ {
+    "kind" : "ParallelRead",
+    "name" : "s1",
+    "properties" : {
+      "user_name" : {
+        "@type" : "http://schema.org/Text",
+        "value" : "Read from Cassandra/Read(CassandraSource)"
+      },
+      "display_data" : [ {
+        "namespace" : "org.apache.beam.sdk.io.cassandra.CassandraIO$CassandraSource",
+        "key" : "hosts",
+        "type" : "STRING",
+        "value" : "NestedValueProvider{value=RuntimeValueProvider{propertyName=cassandraHosts, default=null}, translator=CassandraToBigtable$$Lambda$106/0x0000000800d48440}"
+      }, {
+        "namespace" : "org.apache.beam.sdk.io.cassandra.CassandraIO$CassandraSource",
+        "key" : "port",
+        "type" : "STRING",
+        "value" : "RuntimeValueProvider{propertyName=cassandraPort, default=9042}"
+      }, {
+        "namespace" : "org.apache.beam.sdk.io.cassandra.CassandraIO$CassandraSource",
+        "key" : "keyspace",
+        "type" : "STRING",
+        "value" : "RuntimeValueProvider{propertyName=cassandraKeyspace, default=null}"
+      }, {
+        "namespace" : "org.apache.beam.sdk.io.Read$Bounded",
+        "key" : "source",
+        "type" : "JAVA_CLASS",
+        "value" : "org.apache.beam.sdk.io.cassandra.CassandraIO$CassandraSource",
+        "shortValue" : "CassandraSource",
+        "label" : "Read Source"
+      }, {
+        "namespace" : "org.apache.beam.sdk.io.cassandra.CassandraIO$CassandraSource",
+        "key" : "table",
+        "type" : "STRING",
+        "value" : "RuntimeValueProvider{propertyName=cassandraTable, default=null}"
+      } ],
+      "format" : {
+        "@type" : "http://schema.org/Text",
+        "value" : "custom_source"
+      },
+      "output_info" : [ {
+        "output_name" : {
+          "@type" : "http://schema.org/Text",
+          "value" : "output"
+        },
+        "user_name" : {
+          "@type" : "http://schema.org/Text",
+          "value" : "Read from Cassandra/Read(CassandraSource).out0"
+        },
+        "encoding" : {
+          "@type" : "kind:windowed_value",
+          "is_wrapper" : {
+            "@type" : "http://schema.org/Boolean",
+            "value" : true
+          },
+          "component_encodings" : [ {
+            "@type" : "org.apache.beam.sdk.coders.SerializableCoder",
+            "type" : {
+              "@type" : "http://schema.org/Text",
+              "value" : "org.apache.beam.sdk.values.Row"
+            }
+          }, {
+            "@type" : "kind:global_window"
+          } ]
+        }
+      } ],
+      "custom_source_step_input" : {
+        "metadata" : { },
+        "spec" : {
+          "@type" : "org.apache.beam.runners.dataflow.internal.CustomSources",
+          "serialized_source" : {
+            "@type" : "http://schema.org/Text",
+            "value" : "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"
+          }
+        }
+      }
+    }
+  }, {
+    "kind" : "ParallelDo",
+    "name" : "s2",
+    "properties" : {
+      "serialized_fn" : {
+        "@type" : "http://schema.org/Text",
+        "value" : "%82SNAPPY%00%00%00%00%01%00%00%00%01%00%00%09%d9%c3$%f0C%ac%ed%00%05sr%00!org.apache.beam.sdk.util.DoFnInfoU%02t%9cZ%d7]%d3%02%00%08L%00%04doFnt%00%25Lorg/a%057%00/%017</sdk/transforms/%01=%0c;L%00%15%01/%14Schema%01K(rmationt%006L%8a@%00B8%00@;L%00%0ainputCodert%00%22RF%00%00c%01%1d%04s/%05$%012$mainOutput^%b8%00Lvalues/TupleTag;L%00%0co%051%05D$st%00%0fLjava/!%170/Map;L%00%10sideI%01%8c8Mappingq%00~%00%05L%00%0e%15%18%1cViewst%00%14%09;%90lang/Iterable;L%00%11windowingStrategyt%00.R%cf%00%0d%9d%00W>0%00%90;xpsr%006com.google.cloud.teleport.bigt%01n,.BeamRowToBi%09%12TFn%84X%ec%cb|m%c4%bf%02%00%05I%00%16maxMut%25%9b%90sPerRequestL%00%13defaultColumnFamilyt%00+LN%bc%01%04op!%da%08s/V!L%18Provide!%7f%00%16%0dD8RowKeySeparator!/%00%0a!/(plitLargeRo!/%00%13=/%14Boolea!%f6%00%126'%00%08Fla%25p%10%0axr%00#N%c0%02Y%89E%c6P%acD#%06%ce%93%bd%9d%02%00%00xp%00%01%86%a0sr%00>N8%00%0d%c5%00.2%c5%00%1c$Runtime2%15%00 Y%e91%e7%d4:%88%8a%02!%f5%00%0c%0d%e4%05%22%08t%00%12%1d%c4DObject;L%00%05klasst%00%11%1d%1d%00C%01%13E%a3%1cethodNam:>%00%10StrinA%90%00%09%0d%9a%10Idt%00%10%1dB%04Lo%05%1f %0cproperty%01C![%14%11xpt%00%07%0d%97%0cvr%00>%8a'%02 CassandraY)%04$O)%d6%00%00%19%01%01Y%10%16getDF%1b%02%0csr%00%0ea(%00.A%ed%00.%05%9b0%8b%e4%90%cc%8f#%df%02%00%01J%00%05E%ca%0cxr%00%10%19%254Number%86%ac%95%1d%0b%94%e0%8b)%a0%0d%01%00tR%7f%02%00s%01%de%10%0et%00%01#%01%09%14%16t%00%12geN%5c%02%10%1at%00%0fr6s%02%00p%09<%00p%0d9%10%11getS2~%02%01%19%0c%1at%00%0e6m%02^,%02]d%0cAuto%25%fc%00_%81%f7B%b7%04p%e25%cb%d3%b7`%9a%ac%02%00%01L%00%11elementConverte%81_-%d2%85_ List;xr%004N%a0%02%1dtRj%00%1c%af%d5QB%d7}%01W%25I%0csr%00%1f%25j%01X%18.Collece%a4%14$Empty%01i%1cz%b8%17%b4<%a7%9e%de%110%00,Nu%00%a9P .Serializ%81S%a5%18%1c%17F%80%f5%0d%ea%caf%05%d7%0c%04typEz%10%10xr%00&jG%00%14Custom%05A%1cj%b0%08%9d%0b;%1d%0b%01~%08r%00 n5%00%a1%d3%1cC%dd%d5%89%ae%bc~%f8%01/%10pvr%00%1eN1%00Ed0s.Row%99%0b%9bu%5c%d7%e4i%05%9f%04%06s%c5%84%08t%00$Rd%05%09%1e%04s/)%bb%a9ZRY%04%0d_%00T%cd*D%b3%18yf[%c0z%b5%02%00%02Z%00%09gene%a1%cc%14dL%00%02idAN%18%11xp%01t%00Bj%a9%00%00P9%98|.<init>:400#3d93cb799b3970besr%00%119%cc%b8HashMap%05%07%da%c1%c3%16`%d1%03%00%02F%00%0aloadFactorI%00%09thresholdxp?@eQ(%0cw%08%00%00%00%10%00%00%00%01%01%9a%101sr%00%22N%98%00-%ee%04Kv%25t@j%00%bd%b9%1d%a3%ca6%02%00%02L%00%08key%05%16%01A%0c%03L%00%0a%25%0e%19%12%0cxr%00*jS%00$Structured%053%1cs%bf%12%0e%d5%d46%11!%cf%01Q%10+sr%007N?%00`extensions.protobuf.ByteS%a5%1d%05L%1c5C%0c%19%ee%81%88%07%01Lv%7f%02%14Atomic%055%1c%c7%ec%b5%cc%85tPF%015%01%81%106sr%00(N%81%00-%13%f1%be%05=%1c%0d[9%22%cf%00F%b4%01=%00rr8%03%117%08Lik%09;%1c%b63%8d%9f%0c%e5Y%f4%25T%00%0c%95%0f%04de1X%04%0ci%1a(%08%b9%ce%11%a0%002N%a0%00N!%01%00P!*%05%aa%1c%ba%00%1c%e6%91%cf%1e%eb%05o%00%14%15,%10HostC%c1%80%00e:%e0%08%04Se%c1%af%00%11%25k%18Message%05(%01%83%00%10%05%89%10*sr%00%5c>%89%00Xvendor.guava.v26_0_jre..x%06%18ommon.c%89%89%14.Immut%81M%0cSet$%91]%14edFormE%b1 %00%00%00%02%00%01[%00%08-%22%10st%00%13[%dd%fb%edZ%0cxpur%11%19%c9y%0d%19%1c%90%ceX%9f%10s)l!%a2%00p%01N%0cvr%00%1f%1d%8f%22%1f%09%08v2.%1e%fe%08%01'%01%01L%02%00%03B%00%15memoizedIsInit%85%fd%10edI%00%0d%01%b8%a1I%1cCase_L%00%09%11%10%00_!#%00%0fA%81%1dg%25HA%b3%00G%91%1e-U%04V3%01ja%90%85%a24%0dunknownFields%0e%aa%0a%0ccom/%16%da%09%00/%11E%04/U%1d%25!%a9%e1%8e%00%08Qb%10xsr%00%1e%99&%99Z%ad%f2(MapY6%14%85Z%dc%e7%d0%25%15z/%00(Set%15%f5r%1d%b4%03%cb(%11/R %06%85%06%08s.W>%a1%0a%b0%a4Mf$.%cc%15%e5%02%00%0bZ%00%18allowedLatenessSpecifiedZ%00%0dmode%1d%10D%1atimestampCombiner%1d%1d%14%10trigg%1d%13%08L%00%0f:[%00%08t%00%18%a5%e5%10joda/%01L%0c/Dur%25%b1T;L%00%0fclosingBehaviort%00A%05-%16%02%0dR%cb%0c%22%aa%0b%1a%84%0b%04$C6C%00%0c;L%00%04%01%c3%08t%00?RK%00) %0d=%00i&%f1%0b%1c$Accumul%05%9b%08Mod%0e%17%0c%18%0eonTime%19%9e%00@RS%00&%08%08F%9e%00%00O2B%00%0ek%0c!%042P%01%08t%00<%a6W%00%01%902>%00%0c;L%00%07-%86%08t%002%aaI%00)%ba%0c;L%00%08)S%0eI%0e%003%a6@%00Ia%08Fn;i%cf%0csr%00%16%81%85!%e7%00.%01%e3%00.1%e7%1c%00%00%02?zQ%ce%d6A%b6%08r%00%1f6%25%00 base.Base%1d.%10Y%19:%f4%8e%12%a4%0a%1c%07iMillis%09c%01%01%0c~r%00?%01BI!%04.b%1e#%0f9%83%00.%09%ce%0cing.%09%a3>!%02%01G%01%01%0c%12%00%00x2#%0b%08Enu%95%ec%01%1d`pt%00%11FIRE_IF_NON_EMPTY~r%00=N%81%00IW%0dsnW%02%01{%01%01%01b%81%a28%5ct%00%16DISCARDING_%01q D_PANES~rV%17%0dn%ec%006o%02%01h%01%01%1dl%00%0b%01a%14_ALWAY%01a%00:N%cc%00Ra%00By%02%01Y%01%01%1d]4%0dEND_OF_WINDOW^B%08R_%00%1a%c1%0cM%96%1cj%136%d1%8a%16%8b%1fI4%000%a6%a5%00I%d5%1c%be,k%b7f%f5%9b%80%a5%cb%0c%0bsub%0d%18%e56%04$x%12t%0c%00(%0e%af%0f%a2Y%00%14GlobalIQ$s%96%16%b9%14%02%8a%af%0f%02EB%00;%a2E%00$NonMerging%09I$FnW%06%0bg%d3%ee%a8%ab%09J%001%a2J%00%11@0%c6%04%19y%ba%8a%96W%02%00%00xp"
+      },
+      "non_parallel_inputs" : { },
+      "user_name" : {
+        "@type" : "http://schema.org/Text",
+        "value" : "Convert Row"
+      },
+      "user_fn" : {
+        "@type" : "http://schema.org/Text",
+        "value" : "com.google.cloud.teleport.bigtable.BeamRowToBigtableFn"
+      },
+      "display_data" : [ {
+        "namespace" : "org.apache.beam.sdk.transforms.ParDo$SingleOutput",
+        "key" : "fn",
+        "type" : "JAVA_CLASS",
+        "value" : "com.google.cloud.teleport.bigtable.BeamRowToBigtableFn",
+        "shortValue" : "BeamRowToBigtableFn",
+        "label" : "Transform Function"
+      } ],
+      "parallel_input" : {
+        "@type" : "OutputReference",
+        "output_name" : "output",
+        "step_name" : "s1"
+      },
+      "output_info" : [ {
+        "output_name" : {
+          "@type" : "http://schema.org/Text",
+          "value" : "org.apache.beam.sdk.values.PCollection.<init>:400#3d93cb799b3970be"
+        },
+        "user_name" : {
+          "@type" : "http://schema.org/Text",
+          "value" : "Convert Row.out0"
+        },
+        "encoding" : {
+          "@type" : "kind:windowed_value",
+          "is_wrapper" : {
+            "@type" : "http://schema.org/Boolean",
+            "value" : true
+          },
+          "component_encodings" : [ {
+            "@type" : "kind:pair",
+            "is_pair_like" : {
+              "@type" : "http://schema.org/Boolean",
+              "value" : true
+            },
+            "component_encodings" : [ {
+              "@type" : "org.apache.beam.sdk.coders.CustomCoder",
+              "type" : {
+                "@type" : "http://schema.org/Text",
+                "value" : "org.apache.beam.sdk.extensions.protobuf.ByteStringCoder"
+              },
+              "serialized_coder" : {
+                "@type" : "http://schema.org/Text",
+                "value" : "%82SNAPPY%00%00%00%00%01%00%00%00%01%00%00%00%aa%e9%01%f0R%ac%ed%00%05sr%007org.apache.beam.sdk.extensions.protobuf.ByteStringCoder5C%0c%19%ee%81%88%07%02%00%00xr%00&org.a:F%00%00c%01( s.AtomicC%01%0d%1c%c7%ec%b5%cc%85tPF%095%04*oJ{%00%0d5$Structured%059%1cs%bf%12%0e%d5%d46%11%099%00 j9%00%05/0C%dd%d5%89%ae%bc~%f8%02%00%00xp"
+              }
+            }, {
+              "@type" : "kind:stream",
+              "is_stream_like" : {
+                "@type" : "http://schema.org/Boolean",
+                "value" : true
+              },
+              "component_encodings" : [ {
+                "@type" : "org.apache.beam.sdk.coders.CustomCoder",
+                "type" : {
+                  "@type" : "http://schema.org/Text",
+                  "value" : "org.apache.beam.sdk.extensions.protobuf.ProtoCoder"
+                },
+                "serialized_coder" : {
+                  "@type" : "http://schema.org/Text",
+                  "value" : "%82SNAPPY%00%00%00%00%01%00%00%00%01%00%00%01%fa%98%05%f0I%ac%ed%00%05sr%002org.apache.beam.sdk.extensions.protobuf.ProtoCoder%ba%00%1c%e6%91%cf%1e%eb%02%00%02L%00%14ex%0d,|HostClassest%00%0fLjava/util/Set;L%00%11%05J%18Message%05(%08t%00%11%09&%10lang/%05%13%18;xr%00&orF%92%000coders.Custom%05%868j%b0%08%9d%0b;%1d%0b%02%00%00xr%00 n5%00%01<%1cC%dd%d5%89%ae%bc~%f8%01/%10psr%00%5c>1%00|vendor.guava.v26_0_jre.com.googl%05%0b%a0mon.collect.ImmutableSet$SerializedForm%00%00%09%02H%02%00%01[%00%08elementst%00%13[L%25%17%00l%01%f1(Object;xpur%11%19%00.%01%19%00.%0d%19%1c%90%ceX%9f%10s)l%05%b2%01P%0cvr%00%1f%1d%8f%08big%05%7f,.v2.Mutation%01'%01%01$%02%00%03B%00%15memo%01%93%14IsInit%0d%a0%08I%00%0d%01%b8%01.%1cCase_L%00%09%11%10%0c_t%00%12J%a1%00%08r%00&%1dw%25%c70buf.Generated-%d4%04V3%01z|%00%00%00%01%02%00%01L%00%0dunknownFieldst%00%25Lcom/g%25K%00/%11E%04/U%1d%25%14Set;xp"
+                }
+              } ]
+            } ]
+          }, {
+            "@type" : "kind:global_window"
+          } ]
+        }
+      } ]
+    }
+  }, {
+    "kind" : "ParallelDo",
+    "name" : "s3",
+    "properties" : {
+      "serialized_fn" : {
+        "@type" : "http://schema.org/Text",
+        "value" : "%82SNAPPY%00%00%00%00%01%00%00%00%01%00%00%0c%1f%f6/%f0C%ac%ed%00%05sr%00!org.apache.beam.sdk.util.DoFnInfoU%02t%9cZ%d7]%d3%02%00%08L%00%04doFnt%00%25Lorg/a%057%00/%017</sdk/transforms/%01=%0c;L%00%15%01/%14Schema%01K(rmationt%006L%8a@%00B8%00@;L%00%0ainputCodert%00%22RF%00%00c%01%1d%04s/%05$%012$mainOutput^%b8%00Lvalues/TupleTag;L%00%0co%051%05D$st%00%0fLjava/!%170/Map;L%00%10sideI%01%8c8Mappingq%00~%00%05L%00%0e%15%18%1cViewst%00%14%09;%90lang/Iterable;L%00%11windowingStrategyt%00.R%cf%00%0d%9d%00W>0%00%18;xpsr%00?N%bf%01(io.gcp.bigt%01o%04.B%0d%09%08IO$%11%0bpWriterFn%e2(>%08%04M%b1%b6%02%00%05J%00%0erecords%01%1d%14tenL%00%0e%11C%01%12!r%00<R%a3%00%18io/gcp/%11-%00/%11e%1cService$%09>0;L%00%06configt%004%b2H%00%00C%0568;L%00%08failurest%00,)X%25%93,concurrent/C%15%0b$LinkedQueu!p%10%0bseen)D%00s%25%ab%0cxr%00#N<%01Y%c4e%014%acD#%06%ce%93%bd%9d%02%00%00xp%00%0d%01!y%00<N=%00>y%01%10AutoVA]%00_1%13%09%cb`%25%7f%05&%1a%df%ab%a1%02%00%07Z%00%08validateL%00%0f1C%04Opa(Pst%002Lcom/google/cloud9g)M5n%0d4%0c;L%00%1b:G%00%09u uratort%005R|%01%19%f8 /SerializA<%0cFunc%01%8b%00;%1d%9d-%d7^J%00z%0e%02a%930instanceIdt%00+R%8f%00%00o)%01%00/%25>%18ProvideAB$%09projectId!%c6%0c%13L%00%07E%e3%0d%0f%0cxr%002%8e%98%016%8e%01%1c%e9%9d%a1%84%fbD%b2%db%25%e4%00%01!%dd%00!a%ef%00.a%b4%1c.invoke.1%14%d8edLambdaoa%d0%94,)6%85%02%00%0aI%00%0eimplMethodKind[%00%0ccapturedArgst%00%13[I%ad%01Q%08/Ob%01%c0%0c;L%00%0e%09%25(ingClasst%00%11%1d&%05%13%10;L%00%18f-%81(alInterface%05%1c%08t%00%12%1d/%04St%01H%0c;L%00%1dJ0%00%09%9a%0cName!4%0c%19L%00%22b%25%00%1cSignatur%11*%00%09%01%da%05p%0d;%1d%eb%1dQ%00%13%01'%09g>B%00%00%16)%ec%14tiated%09#%08Typ%09`eR%0c%06ur%00-!)r-!%1c%90%ceX%9f%10s)l%25%96 %00%00%00%01pvr%004%ae%de%01%04IO%89z%1c^%e8@%a7%87%9b%ddo%01J%08r%00)NC%00Y%fe%0c.PTr%cd%c6 ou%b8%af%8aC%ce%8c%03a%fc%08t%003z%b3%06Q#.7%03,t%00%05applyt%00&(=%af%0d%e3%00)F%13%00%00t%05%e3%00/%e9%91%f9Z^T%03%11%e3%0ct%00+lE%98%08$en%01%80%18BulkApi.%f9%038$436438d5$1t%00%ab(Rv%039%07R%ce%00%00;%c2%8d%04%10$Buila%ba%00)%e6;%00%0ct%00v(%e6>%00%eay%00%81%0a%00>N.%02%8d%9d%00.2%9d%04%1c$Runtime2%15%00 Y%e91%e7%d4:%88%8a%02%0e%1c%08%1c%0cdefault%05%226%c0%03M%11%0cL%00%05k%81%0cam%10%18L%00%0am%85T}i%00%09%0d{%a19%00%10]>%08Lona%fe %0cproperty%153%04xpa7%10>com.%c9E%00.%c5E .teleport&%25%08(CassandraTo%b1%1f%04$O%a9%86%cd%f7%01%01%1cxpt%00%15get%11#%00I%b5%ca%0csr%00%0e%b97%05%910%8b%e4%90%cc%8f#%df%02%00%01J%00%05%12%c8%08%0cxr%00%10%19%254Number%86%ac%95%1d%0b%94%e0%8ba%9fa%e9%05%01%08t%00%12%d1%c5%1dc!%18%04'p%01%06%0c,t%00%14%1d%87%00P.%16%06%0c0t%00%11%11=%15%196<%00%00%12%1d<%00Ta1%c9A%040t%f9%83%0d%17%0csr%00*%05%b2%0ej%08%00.&j%08%00.Rj%08%18%02%ba%fb*fLp%893%00p%12%a2%09RB%02yi*$%08%0e4%0bB%f4%0ap%e25%cb%d3%b7`%9a%ac%02%00%01L%00%11elementConverte%0e%9c%0aM%07%01%9f%18/List;xZ'%05%1dtRj%00%1c%af%d5QB%d7}%01W%25%88%0csr%00%1f%19%f7%10Colle%12%08%08%18s$Empty%01i%1cz%b8%17%b4<%a7%9e%de%110%00%22N+%03%16%8d%0b%08.Kv%12K%0b@j%00%bd%b9%1d%a3%ca6%02%00%02L%00%08key%05%16!%d0%0c%03L%00%0aE%22%19%12%0cxr%00*jS%00%10Struc%c1%ab%00d%053%1cs%bf%12%0e%d5%d46%11%01%8e%08r%00 j9%00%05/%1cC%dd%d5%89%ae%bc~%f8%01/%01%ed%007N1%00`extensions.protobuf.ByteS%e5n%05H%1c5C%0c%19%ee%81%88%07%01H%08r%00&NF%00-%03%14Atomic%055%1c%c7%ec%b5%cc%85tPF%015%01%fd%10Asr%00(j;%00%1e8%0c%05=%1c%0d[9%22%cf%00F%b4%01=%08r%00,%8a7%00%08Lik%09;%1c%b63%8d%9f%0c%e5Y%f4%25%7f%00%0cUL%04de1%83%00%0c%0e%15%0ca%0f%99@%11%a0RX%09N!%01%00P!*%05%aa%1c%ba%00%1c%e6%91%cf%1e%eb%05o%00%14%15,%10HostC%81%e6%0e%c7%0b%00%0f%89%c5E%be%04Se%0e%17%09%00%11%25k%14Messag%16%eb%08%01%83%00%18z^%01%14Custom%05w%1cj%b0%08%9d%0b;%1d%0b!!%01;%10Bsr%00%5c>'%01Xvendor.guava.v26_0_jre..(%05%18ommon.cI%fb%10.Immu%12k%0a%0cSet$%f1%eb%14edForm%85%b1 %00%00%00%02%00%01[%00%08-W%05%b6%0c%17xpu%01%83%00%1b%01%1f%0cvr%00%1f%1d`%91%a2%18.v2.Mut%12%19%0f%01'%01%01L%02%00%03B%00%15memoizedIsInit%12%93%0b%10edI%00%0d%01%89%0e%94%0b%1cCase_L%00%09%11%10%00_%01k%00(!)%1dg%25NA%b9%0cGene%0ej%0e%00d-[%04V3%01j%0eY%09%85[4%0dunknownFields%0e*%0f*y%0c%11E%04/U%1d%25!%af%c1%0f%00%08Q%9f%00sZS%0de%d8%08s.T%1a_%0f8%b3%18yf[%c0z%b5%02%00%02Z%00%09g%11%97%0cL%00%02i%12%d5%0b%18%19xp%01t%00B>%b2%01%0e%98%10%0dJ%00P%99%90|.<init>:400#a32dc9f64f1df03asr%00%11%99%c4%b8HashMap%05%07%da%c1%c3%16`%d1%03%00%02F%00%0aloadFactorI%00%09thresholdxp?@!%1a%1c%00%0cw%08%00%00%00%10!%25!%5c%08Wsr%96%f8%0d%f1%1e%12%f9%0e%10Resul%16K%10%1c%bc%c4%06_-%e0!KQ%9b%14Exsr%00%1e%19%a4%19%d8%adh(MapY6%14%85Z%dc%e7%d0%014%81%aan/%00(Set%15%f5r%1d%b4%03%cb(%11/R!%04-H%00W>T%10H%a4Mf$.%cc%15%e5%02%00%0bZ%00%18allow%0e%f1%0cTtenessSpecifiedZ%00%0dmode%1d%10D%1atimestampCombiner%1d%1d%14%10trigg%1d%13%08L%00%0f:[%00%08t%00%18%12%90%0a%10joda/%01L%04/D%0e%ae%0e%08ion%0ex%0e0closingBehavi%0e%c2%0e%00A%05->$%0b%d9%e0%04/w%11%d9%1a7%11%04$C6C%00%0c;L%00%04%01%c3%08t%00?RK%00) %0d=%00i&%a4%11%1c$Accumule%7f%08Mod%0e%cd%0e%18%0eonTime%19%9e%00@RS%00n%9e%00%00O2B%00%0e%1e%12!%042P%01%04t%00V{%11RW%00%01%902>%00%0c;L%00%07-%86%0eS%10z%c9%0c9>%00T)%ba%0ez%11%09%15%0e%fc%13%003%a6@%00Ia%08Fn;%16%d9%09%0csr%00%16a%d7!%e7%00.%01%e3%00.1%e7%1c%00%00%02?zQ%ce%d6A%b6%08r%00%1f6%25%00 base.Base%1d.%10Y%19:%f4%8e%12Y%0a%1c%07iMillis%09c%01%01%00~Z%17%139,%00.%09%ce%0cing.%09%a3>!%02%01G%01%01%0c%12%00%00x2%d8%0a%08Enu%b5%f0%01%1d`pt%00%11FIRE_IF_NON_EMPTY~r%00=%01%c3I%a2%04.b%1eW%15IW%0dsnW%02%01{%01%01%01b%81y8nt%00%16DISCARDING_%01q D_PANES~r%82a%0aB%ec%006o%02%01h%01%01%1dl%00%0b%01a%14_ALWAY%01a%00:N%cc%00RM%01By%02%01Y%01%01%1d]0%0dEND_OF_WINDO%a1RR{%09R_%00%00D%16@%0dM%96%1cj%136%d1%8a%16%8b%1fI4%000%a6%a5%00I%d5%1c%be,k%b7f%f5%9b%80%c5%fe%0c%0bsub%0d%18%e5%b9%04;x%12f%0c%10?sr%006%a2Y%00%14GlobalIQ$s%96%16%b9%14%02%8a%af%0f%02EB%00;%a2E%00$NonMerging%09I$FnW%06%0bg%d3%ee%a8%ab%09J%001%a2J%00%11@0%c6%04%19y%ba%8a%96W%02%00%00xp"
+      },
+      "non_parallel_inputs" : { },
+      "user_name" : {
+        "@type" : "http://schema.org/Text",
+        "value" : "Write to Bigtable/BigtableIO.WriteWithResults/ParDo(BigtableWriter)"
+      },
+      "user_fn" : {
+        "@type" : "http://schema.org/Text",
+        "value" : "org.apache.beam.sdk.io.gcp.bigtable.BigtableIO$BigtableWriterFn"
+      },
+      "display_data" : [ {
+        "namespace" : "org.apache.beam.sdk.io.gcp.bigtable.BigtableIO$BigtableWriterFn",
+        "key" : "projectId",
+        "type" : "STRING",
+        "value" : "RuntimeValueProvider{propertyName=bigtableProjectId, default=null}",
+        "label" : "Bigtable Project Id"
+      }, {
+        "namespace" : "org.apache.beam.sdk.io.gcp.bigtable.BigtableIO$BigtableWriterFn",
+        "key" : "tableId",
+        "type" : "STRING",
+        "value" : "RuntimeValueProvider{propertyName=bigtableTableId, default=null}",
+        "label" : "Bigtable Table Id"
+      }, {
+        "namespace" : "org.apache.beam.sdk.io.gcp.bigtable.BigtableIO$BigtableWriterFn",
+        "key" : "withValidation",
+        "type" : "BOOLEAN",
+        "value" : true,
+        "label" : "Check is table exists"
+      }, {
+        "namespace" : "org.apache.beam.sdk.transforms.ParDo$SingleOutput",
+        "key" : "fn",
+        "type" : "JAVA_CLASS",
+        "value" : "org.apache.beam.sdk.io.gcp.bigtable.BigtableIO$BigtableWriterFn",
+        "shortValue" : "BigtableWriterFn",
+        "label" : "Transform Function"
+      }, {
+        "namespace" : "org.apache.beam.sdk.io.gcp.bigtable.BigtableIO$BigtableWriterFn",
+        "key" : "instanceId",
+        "type" : "STRING",
+        "value" : "RuntimeValueProvider{propertyName=bigtableInstanceId, default=null}",
+        "label" : "Bigtable Instance Id"
+      } ],
+      "parallel_input" : {
+        "@type" : "OutputReference",
+        "output_name" : "org.apache.beam.sdk.values.PCollection.<init>:400#3d93cb799b3970be",
+        "step_name" : "s2"
+      },
+      "output_info" : [ {
+        "output_name" : {
+          "@type" : "http://schema.org/Text",
+          "value" : "org.apache.beam.sdk.values.PCollection.<init>:400#a32dc9f64f1df03a"
+        },
+        "user_name" : {
+          "@type" : "http://schema.org/Text",
+          "value" : "Write to Bigtable/BigtableIO.WriteWithResults/ParDo(BigtableWriter).out0"
+        },
+        "encoding" : {
+          "@type" : "kind:windowed_value",
+          "is_wrapper" : {
+            "@type" : "http://schema.org/Boolean",
+            "value" : true
+          },
+          "component_encodings" : [ {
+            "@type" : "org.apache.beam.sdk.coders.CustomCoder",
+            "type" : {
+              "@type" : "http://schema.org/Text",
+              "value" : "org.apache.beam.sdk.io.gcp.bigtable.BigtableWriteResultCoder"
+            },
+            "serialized_coder" : {
+              "@type" : "http://schema.org/Text",
+              "value" : "%82SNAPPY%00%00%00%00%01%00%00%00%01%00%00%00%ab%ee%01%f0R%ac%ed%00%05sr%00<org.apache.beam.sdk.io.gcp.bigtable.BigtableWriteResultCoder%bc%c4%06_-%e0!K%02%00%00xr%00&NK%000coders.Atomic%055 %c7%ec%b5%cc%85tPF%02%055%04*oJ%80%00%0d5$Structured%059%1cs%bf%12%0e%d5%d46%11%099%00 j9%00%05/0C%dd%d5%89%ae%bc~%f8%02%00%00xp"
+            }
+          }, {
+            "@type" : "kind:global_window"
+          } ]
+        }
+      } ]
+    }
+  } ],
+  "type" : "JOB_TYPE_BATCH"
+}

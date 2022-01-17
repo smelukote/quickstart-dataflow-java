@@ -1,0 +1,70 @@
+{
+  "name": "GCS Text to BigQuery (Stream)",
+  "description": "A streaming pipeline that can read text files stored in GCS, perform a transform via a user defined JavaScript function, and stream the results into BigQuery. This pipeline requires a JavaScript function and a JSON representation of the BigQuery TableSchema.",
+  "parameters": [
+    {
+      "name": "javascriptTextTransformGcsPath",
+      "label": "GCS location of your JavaScript UDF",
+      "helpText": "The full URL of your .js file. Example: gs://your-bucket/your-function.js",
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "GCS_READ_FILE"
+    },
+    {
+      "name": "JSONPath",
+      "label": "GCS location of your BigQuery schema file, described as a JSON",
+      "helpText": "Example:\n{\n\"BigQuery Schema\": [\n{\n\"name\": \"location\",\n\"type\": \"STRING\"\n},\n{\n\"name\": \"name\",\n\"type\": \"STRING\"\n},\n{\n\"name\": \"age\",\n\"type\": \"STRING\"\n},\n{\n\"name\": \"color\",\n\"type\": \"STRING\"\n},\n{\n\"name\": \"coffee\",\n\"type\": \"STRING\"\n}\n]\n}",
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "GCS_READ_FILE"
+    },
+    {
+      "name": "javascriptTextTransformFunctionName",
+      "label": "The name of the JavaScript function you wish to call as your UDF",
+      "helpText": "The function name should only contain letters, digits and underscores. Example: 'transform' or 'transform_udf1'.",
+      "regexes": [
+        "[a-zA-Z0-9_]+"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "outputTable",
+      "label": "The fully qualified BigQuery table",
+      "helpText": "Example: your-project:your-dataset.your-table",
+      "regexes": [
+        ".+:.+\\..+"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "inputFilePattern",
+      "label": "The GCS location of the text you'd like to process",
+      "helpText": "Example: gs://your-bucket/your-files/text.txt",
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "GCS_READ_FILE"
+    },
+    {
+      "name": "bigQueryLoadingTemporaryDirectory",
+      "label": "Temporary directory for BigQuery loading process",
+      "helpText": "Example: gs://your-bucket/your-files/temp_dir",
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "GCS_WRITE_FOLDER"
+    },
+    {
+      "name": "outputDeadletterTable",
+      "label": "Table for messages failed to reach the output table(aka. Deadletter table)",
+      "helpText": "Messages failed to reach the output table for all kind of reasons (e.g., mismatched schema, malformed json) are written to this table. If it doesn't exist, it will be created during pipeline execution. If not specified, \"outputTableSpec_error_records\" is used instead. Ex: your-project:your-dataset.your-table-name",
+      "isOptional": true,
+      "regexes": [
+        ".+:.+\\..+"
+      ],
+      "paramType": "TEXT"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "name": "Cloud DLP Data Masking/Tokenization from Cloud Storage to BigQuery (using Cloud DLP)",
+  "description": "An example pipeline that reads CSV files from Cloud Storage, uses Cloud DLP API to mask and tokenize data based on the DLP templates provided and stores output in BigQuery. Note, not all configuration settings are available in this default template. You may need to deploy a custom template to accommodate your specific environment and data needs. More details here: https://cloud.google.com/solutions/de-identification-re-identification-pii-using-cloud-dlp",
+  "parameters": [
+    {
+      "name": "inputFilePattern",
+      "label": "Input Cloud Storage File(s)",
+      "helpText": "The GCS location of the CSV files you'd like to process. Ex. gs://your-bucket/your-files/*.csv",
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "datasetName",
+      "label": "BigQuery Dataset",
+      "helpText": "BigQuery Dataset to be used. Dataset must exist prior to execution. Ex. pii_dataset",
+      "regexes": [
+        "^[^.]*$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "batchSize",
+      "label": "Batch size",
+      "helpText": "Batch size contents (number of rows) to optimize DLP API call. Total size of the rows must not exceed 512 KB and total cell count must not exceed 50,000. Default batch size is set to 100. Ex. 1000",
+      "isOptional": true,
+      "regexes": [
+        "^[1-9]+[0-9]*$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "dlpProjectId",
+      "label": "Cloud DLP project ID",
+      "helpText": "Cloud DLP project ID to be used for data masking/tokenization. Ex. your-dlp-project",
+      "regexes": [
+        "^([a-z0-9\\.]+:)?[a-z0-9][a-z0-9-]{5,29}$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "deidentifyTemplateName",
+      "label": "Cloud DLP deidentify template name",
+      "helpText": "Cloud DLP template to deidentify contents. Create here https://console.cloud.google.com/security/dlp/create/template. Ex. projects/your-project-id/locations/global/deidentifyTemplates/generated_template_id",
+      "regexes": [
+        "^projects\\/[^\\n\\r\\/]+(\\/locations\\/[^\\n\\r\\/]+)?\\/deidentifyTemplates\\/[^\\n\\r\\/]+$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "inspectTemplateName",
+      "label": "Cloud DLP inspect template name",
+      "helpText": "Cloud DLP template to inspect contents. Ex. projects/your-project-id/locations/global/inspectTemplates/generated_template_id",
+      "isOptional": true,
+      "regexes": [
+        "^projects\\/[^\\n\\r\\/]+(\\/locations\\/[^\\n\\r\\/]+)?\\/inspectTemplates\\/[^\\n\\r\\/]+$"
+      ],
+      "paramType": "TEXT"
+    }
+  ]
+}

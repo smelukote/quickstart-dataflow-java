@@ -1,0 +1,42 @@
+{
+  "name": "Parquet in GCS to Cloud Bigtable",
+  "description": "A pipeline which reads data from Parquet files in Google Cloud Storage and writes it to Cloud Bigtable table.",
+  "parameters": [
+    {
+      "name": "bigtableProjectId",
+      "label": "Project ID",
+      "helpText": "The ID of the Google Cloud project of the Cloud Bigtable instance that you want to write data to",
+      "regexes": [
+        "[a-z0-9\\-\\.\\:]+"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "bigtableInstanceId",
+      "label": "Instance ID",
+      "helpText": "The ID of the Cloud Bigtable instance that contains the table",
+      "regexes": [
+        "[a-z][a-z0-9\\-]+[a-z0-9]"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "bigtableTableId",
+      "label": "Table ID",
+      "helpText": "The ID of the Cloud Bigtable table to import",
+      "regexes": [
+        "[_a-zA-Z0-9][-_.a-zA-Z0-9]*"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "inputFilePattern",
+      "label": "Input file pattern",
+      "helpText": "GCS path pattern where data is located. For example, \"gs://your-bucket/your-path/table1*.avro\"",
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+\\/[^\\n\\r]+$"
+      ],
+      "paramType": "TEXT"
+    }
+  ]
+}

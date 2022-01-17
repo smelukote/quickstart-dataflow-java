@@ -1,0 +1,81 @@
+{
+  "name": "Cloud Spanner to CSV Text File",
+  "description": "A pipeline which reads in Cloud Spanner table and writes it to Google Cloud Storage as CSV text files.",
+  "parameters": [
+    {
+      "name": "spannerProjectId",
+      "label": "Read data from Cloud Spanner Project Id of",
+      "helpText": "The Google Cloud Project Id of the Cloud Spanner database that you want to read data from",
+      "regexes": [
+        "^([a-z0-9\\.]+:)?[a-z0-9][a-z0-9-]{5,29}$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "spannerDatabaseId",
+      "label": "Read data from Cloud Spanner Database of",
+      "helpText": "Database of requested table.",
+      "regexes": [
+        ".+"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "spannerInstanceId",
+      "label": "Read data from Cloud Spanner Instance of",
+      "helpText": "Instance of requested table.",
+      "regexes": [
+        ".+"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "spannerTable",
+      "label": "Table",
+      "helpText": "Table to export",
+      "regexes": [
+        "^.+$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "spannerSnapshotTime",
+      "label": "Snapshot time",
+      "helpText": "Specifies the snapshot time as RFC 3339 format in UTC time without the timezone offset(always ends in 'Z'). Ex-1990-12-31T23:59:59Z. https://cloud.google.com/spanner/docs/timestamp-bounds",
+      "isOptional": true,
+      "regexes": [
+        "^([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):(([0-9]{2})(\\.[0-9]+)?)Z$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "textWritePrefix",
+      "label": "GCS path of where to write data",
+      "helpText": "GCS Path Prefix as to where data should be written. Ex: gs://your-bucket/your-path",
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "GCS_WRITE_FOLDER"
+    },
+    {
+      "name": "csvTempDirectory",
+      "label": "Cloud storage temp directory for storing csv files",
+      "helpText": "The GCS path where the temporary csv files can be stored. Ex: gs://your-bucket/your-path",
+      "isOptional": true,
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "GCS_WRITE_FOLDER"
+    },
+    {
+      "name": "spannerPriority",
+      "label": "Spanner priority",
+      "helpText": "The request priority for cloud spanner calls. The value must be one of:[HIGH,MEDIUM,LOW]. (Default: MEDIUM)",
+      "isOptional": true,
+      "regexes": [
+        "(HIGH|MEDIUM|LOW)"
+      ],
+      "paramType": "TEXT"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "image": "gcr.io/dataflow-templates/2020-07-20-00_rc00/kafka-to-bigquery",
+  "metadata": {
+    "name": "Kafka to BigQuery",
+    "description": "A streaming pipeline which ingests data in JSON format from Kafka, performs a transform via a user defined JavaScript function, and writes to a pre-existing BigQuery table.",
+    "parameters": [
+      {
+        "name": "inputTopics",
+        "label": "Kafka topic to read the input from",
+        "helpText": "Kafka topic to read the input from. Example: test_topic",
+        "regexes": [
+          "[,a-zA-Z0-9._-]+"
+        ],
+        "paramType": "PUBSUB_TOPIC"
+      },
+      {
+        "name": "bootstrapServers",
+        "label": "Kafka Bootstrap Server list",
+        "helpText": "Kafka Bootstrap Server list, separated by commas. Example: localhost:9092,127.0.0.1:9093",
+        "regexes": [
+          "[,:a-zA-Z0-9._-]+"
+        ],
+        "paramType": "TEXT"
+      },
+      {
+        "name": "javascriptTextTransformGcsPath",
+        "label": "GCS location of your JavaScript UDF",
+        "helpText": "The full URL of your .js file. Example: gs://your-bucket/your-function.js",
+        "isOptional": true,
+        "regexes": [
+          "^gs:\\/\\/[^\\n\\r]+$"
+        ],
+        "paramType": "GCS_READ_FILE"
+      },
+      {
+        "name": "javascriptTextTransformFunctionName",
+        "label": "The name of the JavaScript function you wish to call as your UDF",
+        "helpText": "The function name should only contain letters, digits and underscores. Example: 'transform' or 'transform_udf1'.",
+        "isOptional": true,
+        "regexes": [
+          "[a-zA-Z0-9_]+"
+        ],
+        "paramType": "TEXT"
+      },
+      {
+        "name": "outputTableSpec",
+        "label": "BigQuery output table",
+        "helpText": "BigQuery table location to write the output to. The table\u2019s schema must match the input JSON objects. Ex: your-project:your-dataset.your-table-name",
+        "regexes": [
+          ".+:.+\\..+"
+        ],
+        "paramType": "TEXT"
+      },
+      {
+        "name": "outputDeadletterTable",
+        "label": "Table for messages failed to reach the output table(aka. Deadletter table)",
+        "helpText": "Messages failed to reach the output table for all kind of reasons (e.g., mismatched schema, malformed json) are written to this table. If it doesn't exist, it will be created during pipeline execution. If not specified, \"outputTableSpec_error_records\" is used instead. Ex: your-project:your-dataset.your-table-name",
+        "isOptional": true,
+        "regexes": [
+          ".+:.+\\..+"
+        ],
+        "paramType": "TEXT"
+      }
+    ]
+  },
+  "sdkInfo": {
+    "language": "JAVA"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "name": "Pub/Sub Subscription to BigQuery",
+  "description": "Streaming pipeline. Ingests JSON-encoded messages from a Pub/Sub subscription, transforms them using a JavaScript user-defined function (UDF), and writes them to a pre-existing BigQuery table as BigQuery elements.",
+  "parameters": [
+    {
+      "name": "inputSubscription",
+      "label": "Pub/Sub input subscription",
+      "helpText": "Pub/Sub subscription to read the input from, in the format of 'projects/your-project/subscriptions/your-subscription'",
+      "regexes": [
+        "^projects\\/[^\\n\\r\\/]+\\/subscriptions\\/[^\\n\\r\\/]+$"
+      ],
+      "paramType": "PUBSUB_SUBSCRIPTION"
+    },
+    {
+      "name": "javascriptTextTransformGcsPath",
+      "label": "GCS location of your JavaScript UDF",
+      "helpText": "The full URL of your .js file. Example: gs://your-bucket/your-function.js",
+      "isOptional": true,
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "GCS_READ_FILE"
+    },
+    {
+      "name": "javascriptTextTransformFunctionName",
+      "label": "The name of the JavaScript function you wish to call as your UDF",
+      "helpText": "The function name should only contain letters, digits and underscores. Example: 'transform' or 'transform_udf1'.",
+      "isOptional": true,
+      "regexes": [
+        "[a-zA-Z0-9_]+"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "outputTableSpec",
+      "label": "BigQuery output table",
+      "helpText": "BigQuery table location to write the output to. The table\u2019s schema must match the input JSON objects. Ex: your-project:your-dataset.your-table-name",
+      "regexes": [
+        ".+:.+\\..+"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "outputDeadletterTable",
+      "label": "Table for messages failed to reach the output table(aka. Deadletter table)",
+      "helpText": "Messages failed to reach the output table for all kind of reasons (e.g., mismatched schema, malformed json) are written to this table. It should be in the format of \"your-project:your-dataset.your-table-name\". If it doesn't exist, it will be created during pipeline execution. If not specified, \"outputTableSpec_error_records\" is used instead.",
+      "isOptional": true,
+      "regexes": [
+        ".+:.+\\..+"
+      ],
+      "paramType": "TEXT"
+    }
+  ]
+}

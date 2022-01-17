@@ -1,0 +1,47 @@
+{
+  "image": "gcr.io/dataflow-templates/2020-07-20-00_rc00/bigquery-to-parquet",
+  "metadata": {
+    "name": "BigQuery export to Parquet(Storage API)",
+    "description": "A pipeline to export a BigQuery table into Parquet files using the BigQuery Storage API.",
+    "parameters": [
+      {
+        "name": "tableRef",
+        "label": "BigQuery table to export",
+        "helpText": "BigQuery table location to export. Ex: your-project:your-dataset.your-table-name",
+        "regexes": [
+          ".+:.+\\..+"
+        ],
+        "paramType": "TEXT"
+      },
+      {
+        "name": "bucket",
+        "label": "Output GCS file(s)",
+        "helpText": "Path and filename prefix for writing output files. Ex: gs://your-bucket/export",
+        "regexes": [
+          "^gs:\\/\\/[^\\n\\r]+$"
+        ],
+        "paramType": "GCS_WRITE_FILE"
+      },
+      {
+        "name": "numShards",
+        "label": "Maximum Number of Output Shards",
+        "helpText": "The maximum number of output shards produced when writing.Default maximum number of Shards is 1",
+        "isOptional": true,
+        "regexes": [
+          "^[1-9]+$"
+        ],
+        "paramType": "TEXT"
+      },
+      {
+        "name": "fields",
+        "label": "List of field names",
+        "helpText": "Comma separated list of fields to select from the table.",
+        "isOptional": true,
+        "paramType": "TEXT"
+      }
+    ]
+  },
+  "sdkInfo": {
+    "language": "JAVA"
+  }
+}

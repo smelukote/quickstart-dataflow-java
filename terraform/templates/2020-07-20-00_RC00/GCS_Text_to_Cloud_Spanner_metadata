@@ -1,0 +1,82 @@
+{
+  "name": "Text Files to Cloud Spanner",
+  "description": "A pipeline to import a Cloud Spanner database from a set of Text (CSV) files in GCS.",
+  "parameters": [
+    {
+      "name": "instanceId",
+      "label": "Cloud Spanner instance id",
+      "helpText": "The instance id of the Cloud Spanner database that you want to import to.",
+      "regexes": [
+        "^[a-z0-9\\-]+$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "databaseId",
+      "label": "Cloud Spanner database id",
+      "helpText": "The database id of the Cloud Spanner database that you want to import into (must already exist, and with the destination tables created).",
+      "regexes": [
+        "^[a-z_0-9\\-]+$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "importManifest",
+      "label": "Text Import Manifest file",
+      "helpText": "The GCS path and filename of the text import manifest file. ex: gs://your-bucket/your-folder/your-manifest.json",
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "GCS_READ_FILE"
+    },
+    {
+      "name": "columnDelimiter",
+      "label": "Column delimiter of the data files",
+      "helpText": "The column delimiter of the input text files",
+      "isOptional": true,
+      "paramType": "TEXT"
+    },
+    {
+      "name": "fieldQualifier",
+      "label": "Field qualifier used by the source file",
+      "helpText": "The field qualifier used by the source file. It should be used when character needs to be escaped",
+      "isOptional": true,
+      "paramType": "TEXT"
+    },
+    {
+      "name": "trailingDelimiter",
+      "label": "If true, the lines has trailing delimiters",
+      "helpText": "The flag indicating whether or not the input lines have trailing delimiters",
+      "isOptional": true,
+      "paramType": "TEXT"
+    },
+    {
+      "name": "escape",
+      "label": "Escape character",
+      "helpText": "The escape character",
+      "isOptional": true,
+      "paramType": "TEXT"
+    },
+    {
+      "name": "nullString",
+      "label": "Null String",
+      "helpText": "The string that represents the NULL value",
+      "isOptional": true,
+      "paramType": "TEXT"
+    },
+    {
+      "name": "dateFormat",
+      "label": "Date format",
+      "helpText": "The format used to parse date columns. By default, the pipeline tries to parse the date columns as \"yyyy-MM-dd[' 00:00:00']\" (e.g., 2019-01-31, or 2019-01-31 00:00:00). If your data format is different, please specify the format using the java.time.format.DateTimeFormatter patterns. For more details, please refer to https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html",
+      "isOptional": true,
+      "paramType": "TEXT"
+    },
+    {
+      "name": "timestampFormat",
+      "label": "Timestamp format",
+      "helpText": "The format used to parse timestamp columns. If the timestamp is a long integer, then it is treated as Unix epoch (the microsecond since 1970-01-01T00:00:00.000Z. Otherwise, it is parsed as a string using the java.time.format.DateTimeFormatter.ISO_INSTANT format. For other cases, please specify you own pattern string, e.g., \"MMM dd yyyy HH:mm:ss.SSSVV\" for timestamp in the form of \"Jan 21 1998 01:02:03.456+08:00\". For more details, please refer to https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html",
+      "isOptional": true,
+      "paramType": "TEXT"
+    }
+  ]
+}

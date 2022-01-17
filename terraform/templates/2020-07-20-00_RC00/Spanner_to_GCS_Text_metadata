@@ -1,0 +1,71 @@
+{
+  "name": "Cloud Spanner to CSV Text File",
+  "description": "A pipeline which reads in Cloud Spanner table and writes it to Google Cloud Storage as CSV text files.",
+  "parameters": [
+    {
+      "name": "spannerProjectId",
+      "label": "Read data from Cloud Spanner Project Id of",
+      "helpText": "The Google Cloud Project Id of the Cloud Spanner database that you want to read data from",
+      "regexes": [
+        "^([a-z0-9\\.]+:)?[a-z0-9][a-z0-9-]{5,29}$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "spannerDatabaseId",
+      "label": "Read data from Cloud Spanner Database of",
+      "helpText": "Database of requested table.",
+      "regexes": [
+        ".+"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "spannerInstanceId",
+      "label": "Read data from Cloud Spanner Instance of",
+      "helpText": "Instance of requested table.",
+      "regexes": [
+        ".+"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "spannerTable",
+      "label": "Table",
+      "helpText": "Table to export",
+      "regexes": [
+        "^.+$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "javascriptTextTransformGcsPath",
+      "label": "JavaScript UDF GCS path",
+      "helpText": "[Optional] A GCS path which contains all your JavaScript code. e.g: \"gs://your-bucket/your-transforms/*.js\". If you don't want to use a UDF leave this field blank.",
+      "isOptional": true,
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "GCS_READ_FOLDER"
+    },
+    {
+      "name": "javascriptTextTransformFunctionName",
+      "label": "JavaScript UDF function name",
+      "helpText": "[Optional] Name of the Function to be called. If you have the JavaScript code of: \"function myTransform(inJson) { ...dostuff...}\" then your function name is \"myTransform\". If you don't want to use a UDF leave this field blank.",
+      "isOptional": true,
+      "regexes": [
+        "^.+$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "textWritePrefix",
+      "label": "GCS path of where to write data",
+      "helpText": "GCS Path Prefix as to where data should be written. e.g: \"gs://your-bucket/your-path/\"",
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "GCS_WRITE_FOLDER"
+    }
+  ]
+}
