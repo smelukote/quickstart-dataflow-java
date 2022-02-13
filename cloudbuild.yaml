@@ -19,4 +19,3 @@ steps:
   - --gcpTempLocation=gs://quickstart-dataflow-involuted-woods-340900/samples/temp
   - --runner=DataflowRunner
   - --windowSize=2
-
