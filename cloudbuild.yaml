@@ -12,7 +12,7 @@ steps:
   #Fifth step compiles and runs the packaged java file
 - name: gcr.io/cloud-builders/mvn
   args:
-  - --project=involuted-woods-340900
+  - --project="involuted-woods-340900"
   - --region=us-central1
   - --inputTopic=projects/involuted-woods-340900/topics/mytopic
   - --output=gs://quickstart-dataflow-involuted-woods-340900/samples/output
