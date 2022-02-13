@@ -12,11 +12,11 @@ steps:
   #Fifth step compiles and runs the packaged java file
 - name: gcr.io/cloud-builders/mvn
   args:
-  - --project=smdata2022
+  - --project=involuted-woods-340900
   - --region=us-central1
-  - --inputTopic=projects/smdata2022/topics/mytopic
-  - --output=gs://quickstart-dataflow-smdata2022/samples/output 
-  - --gcpTempLocation=gs://quickstart-dataflow-smdata2022/temp
+  - --inputTopic=projects/involuted-woods-340900/topics/mytopic
+  - --output=gs://quickstart-dataflow-involuted-woods-340900/samples/output
+  - --gcpTempLocation=gs://quickstart-dataflow-involuted-woods-340900/samples/temp
   - --runner=DataflowRunner
   - --windowSize=2
 
