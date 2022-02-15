@@ -1,0 +1,50 @@
+{
+  "name": "GCS Text to Datastore",
+  "description": "Batch pipeline. Reads from text files stored in Cloud Storage and writes JSON-encoded entities to Datastore.",
+  "parameters": [
+    {
+      "name": "textReadPattern",
+      "label": "Input file(s) in Cloud Storage",
+      "helpText": "The input file pattern Dataflow reads from. Ex: gs://your-bucket/.../*.json",
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "GCS_READ_FILE"
+    },
+    {
+      "name": "javascriptTextTransformGcsPath",
+      "label": "JavaScript UDF path in Cloud Storage",
+      "helpText": "The Cloud Storage path pattern for the JavaScript code containing your user-defined functions. Ex: gs://your-bucket/your-transforms/*.js",
+      "isOptional": true,
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "GCS_READ_FILE"
+    },
+    {
+      "name": "javascriptTextTransformFunctionName",
+      "label": "JavaScript UDF name",
+      "helpText": "The name of the function to call from your JavaScript file. Use only letters, digits, and underscores. Ex: transform_udf1",
+      "isOptional": true,
+      "regexes": [
+        "^.+$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "datastoreWriteProjectId",
+      "label": "Project ID",
+      "helpText": "The Google Cloud project ID of where to write Datastore entities",
+      "regexes": [
+        "^([a-z0-9\\.]+:)?[a-z0-9][a-z0-9-]{5,29}$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "errorWritePath",
+      "label": "Output failure file",
+      "helpText": "The error log output file to use for write failures that occur during processing. Ex: gs://your-bucket/errors.txt",
+      "paramType": "GCS_WRITE_FILE"
+    }
+  ]
+}

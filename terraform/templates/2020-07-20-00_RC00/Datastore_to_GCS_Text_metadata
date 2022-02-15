@@ -1,0 +1,63 @@
+{
+  "name": "Datastore to Text File",
+  "description": "Batch pipeline. Reads Datastore entities and writes them to Cloud Storage as text files.",
+  "parameters": [
+    {
+      "name": "datastoreReadGqlQuery",
+      "label": "GQL Query",
+      "helpText": "Specifies which Datastore entities to read. Ex: \u2018SELECT * FROM MyKind\u2019",
+      "regexes": [
+        "^.+$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "datastoreReadProjectId",
+      "label": "Project ID",
+      "helpText": "The Google Cloud project ID of the Datastore instance to read from",
+      "regexes": [
+        "^([a-z0-9\\.]+:)?[a-z0-9][a-z0-9-]{5,29}$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "datastoreReadNamespace",
+      "label": "Namespace",
+      "helpText": "Namespace of requested Datastore entities. Leave blank to use default namespace.",
+      "isOptional": true,
+      "regexes": [
+        "[0-9A-Za-z._-]{0,100}"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "javascriptTextTransformGcsPath",
+      "label": "JavaScript UDF path in Cloud Storage",
+      "helpText": "The Cloud Storage path pattern for the JavaScript code containing your user-defined functions. Ex: gs://your-bucket/your-transforms/*.js",
+      "isOptional": true,
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "GCS_READ_FILE"
+    },
+    {
+      "name": "javascriptTextTransformFunctionName",
+      "label": "JavaScript UDF name",
+      "helpText": "The name of the function to call from your JavaScript file. Use only letters, digits, and underscores. Ex: transform_udf1",
+      "isOptional": true,
+      "regexes": [
+        "^.+$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "textWritePrefix",
+      "label": "Output file directory in Cloud Storage",
+      "helpText": "The path and filename prefix for writing output files. Must end in a slash. Ex: gs://your-bucket/.../",
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "GCS_WRITE_FOLDER"
+    }
+  ]
+}

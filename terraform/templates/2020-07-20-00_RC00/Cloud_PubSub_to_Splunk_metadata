@@ -1,0 +1,100 @@
+{
+  "name": "Pub/Sub to Splunk",
+  "description": "A pipeline that reads from a Pub/Sub subscription and writes to Splunk's HTTP Event Collector (HEC).",
+  "parameters": [
+    {
+      "name": "inputSubscription",
+      "label": "Input Pub/Sub subscription",
+      "helpText": "Pub/Sub subscription to read the input from. The subscription name should be in the format of projects/your-project-id/subscriptions/your-subscription-name.",
+      "regexes": [
+        "^projects\\/[^\\n\\r\\/]+\\/subscriptions\\/[^\\n\\r\\/]+$"
+      ],
+      "paramType": "PUBSUB_SUBSCRIPTION"
+    },
+    {
+      "name": "token",
+      "label": "HEC Authentication token.",
+      "helpText": "Splunk Http Event Collector (HEC) authentication token.",
+      "paramType": "TEXT"
+    },
+    {
+      "name": "url",
+      "label": "Splunk HEC URL.",
+      "helpText": "Splunk Http Event Collector (HEC) url. This should be routable from the VPC in which the pipeline runs. e.g. https://splunk-hec-host:8088",
+      "paramType": "TEXT"
+    },
+    {
+      "name": "outputDeadletterTopic",
+      "label": "Output deadletter Pub/Sub topic",
+      "helpText": "The Pub/Sub topic to publish deadletter records to. The name should be in the format of projects/your-project-id/topics/your-topic-name.",
+      "regexes": [
+        "^projects\\/[^\\n\\r\\/]+\\/topics\\/[^\\n\\r\\/]+$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "javascriptTextTransformGcsPath",
+      "label": "GCS location of your JavaScript UDF",
+      "helpText": "The full URL of your .js file. Example: gs://your-bucket/your-function.js",
+      "isOptional": true,
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "GCS_READ_FILE"
+    },
+    {
+      "name": "javascriptTextTransformFunctionName",
+      "label": "The name of the JavaScript function you wish to call as your UDF",
+      "helpText": "The function name should only contain letters, digits and underscores. Example: 'transform' or 'transform_udf1'.",
+      "isOptional": true,
+      "regexes": [
+        "[a-zA-Z0-9_]+"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "batchCount",
+      "label": "Batch size for sending multiple events to Splunk HEC.",
+      "helpText": "Batch size for sending multiple events to Splunk HEC. Default 1 (no batching).",
+      "isOptional": true,
+      "regexes": [
+        "[0-9]+"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "parallelism",
+      "label": "Maximum number of parallel requests.",
+      "helpText": "Maximum number of parallel requests. Default 1 (no parallelism).",
+      "isOptional": true,
+      "regexes": [
+        "[0-9]+"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "disableCertificateValidation",
+      "label": "Disable SSL certificate validation.",
+      "helpText": "Disable SSL certificate validation (true/false). Default false (validation enabled).",
+      "isOptional": true,
+      "paramType": "TEXT"
+    },
+    {
+      "name": "includePubsubMessage",
+      "label": "Include full Pub/Sub message in the payload.",
+      "helpText": "Include full Pub/Sub message in the payload (true/false). Default false (only data element is included in the payload).",
+      "isOptional": true,
+      "paramType": "TEXT"
+    },
+    {
+      "name": "tokenKMSEncryptionKey",
+      "label": "Google Cloud KMS key.",
+      "helpText": "If this parameter is provided, token string should be passed in encrypted. Encrypt parameters using the KMS API encrypt endpoint. See: https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/encrypt Example: projects/your-project/locations/global/keyRings/test/cryptoKeys/quickstart.",
+      "isOptional": true,
+      "regexes": [
+        "^projects\\/[^\\n\\r\\/]+\\/locations\\/[^\\n\\r\\/]+\\/keyRings\\/[^\\n\\r\\/]+\\/cryptoKeys\\/[^\\n\\r\\/]+$"
+      ],
+      "paramType": "TEXT"
+    }
+  ]
+}

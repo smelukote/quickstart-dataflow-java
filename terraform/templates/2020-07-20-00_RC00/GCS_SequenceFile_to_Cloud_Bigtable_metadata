@@ -1,0 +1,52 @@
+{
+  "name": "SequenceFile to Cloud Bigtable",
+  "description": "A pipeline which reads data from SequenceFile in Google Cloud Storage and writes it to Cloud Bigtable table.",
+  "parameters": [
+    {
+      "name": "bigtableProject",
+      "label": "Project ID",
+      "helpText": "The ID of the Google Cloud project of the Cloud Bigtable instance that you want to write data to",
+      "regexes": [
+        "^([a-z0-9\\.]+:)?[a-z0-9][a-z0-9-]{5,29}$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "bigtableInstanceId",
+      "label": "Instance ID",
+      "helpText": "The ID of the Cloud Bigtable instance that contains the table",
+      "regexes": [
+        "[a-z][a-z0-9\\-]+[a-z0-9]"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "bigtableTableId",
+      "label": "Table ID",
+      "helpText": "The ID of the Cloud Bigtable table to import",
+      "regexes": [
+        "[_a-zA-Z0-9][-_.a-zA-Z0-9]*"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "bigtableAppProfileId",
+      "label": "Application profile ID",
+      "helpText": "The ID of the Cloud Bigtable application profile to be used for the import",
+      "isOptional": true,
+      "regexes": [
+        "[_a-zA-Z0-9][-_.a-zA-Z0-9]*"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "sourcePattern",
+      "label": "Source path pattern",
+      "helpText": "GCS path pattern where data is located. For example, \"gs://your-bucket/your-path/prefix*\"",
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "TEXT"
+    }
+  ]
+}

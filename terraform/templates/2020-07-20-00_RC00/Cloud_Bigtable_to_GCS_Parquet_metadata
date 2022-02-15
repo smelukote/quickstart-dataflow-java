@@ -1,0 +1,57 @@
+{
+  "name": "Cloud Bigtable to Parquet in GCS",
+  "description": "A pipeline which reads in Cloud Bigtable table and writes it to Google Cloud Storage in Parquet format.",
+  "parameters": [
+    {
+      "name": "bigtableProjectId",
+      "label": "Project ID",
+      "helpText": "The ID of the Google Cloud project of the Cloud Bigtable instance that you want to read data from",
+      "regexes": [
+        "[a-z0-9\\-\\.\\:]+"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "bigtableInstanceId",
+      "label": "Instance ID",
+      "helpText": "The ID of the Cloud Bigtable instance that contains the table",
+      "regexes": [
+        "[a-z][a-z0-9\\-]+[a-z0-9]"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "bigtableTableId",
+      "label": "Table ID",
+      "helpText": "The ID of the Cloud Bigtable table to export",
+      "regexes": [
+        "[_a-zA-Z0-9][-_.a-zA-Z0-9]*"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "outputDirectory",
+      "label": "Output directory",
+      "helpText": "GCS path where data should be written. For example, \"gs://your-bucket/your-path/\"",
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+\\/$"
+      ],
+      "paramType": "GCS_WRITE_FOLDER"
+    },
+    {
+      "name": "filenamePrefix",
+      "label": "Parquet file prefix",
+      "helpText": "The prefix of the Parquet file name. For example, \"table1-\"",
+      "paramType": "TEXT"
+    },
+    {
+      "name": "numShards",
+      "label": "Number of file shards",
+      "helpText": "The number of parquet files",
+      "regexes": [
+        "^[1-9]+$"
+      ],
+      "paramType": "TEXT"
+    }
+  ]
+}

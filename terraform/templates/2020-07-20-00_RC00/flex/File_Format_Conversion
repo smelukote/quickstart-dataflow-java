@@ -1,0 +1,98 @@
+{
+  "image": "gcr.io/dataflow-templates/2020-07-20-00_rc00/file-format-conversion",
+  "metadata": {
+    "name": "Convert file formats between Avro, Parquet & csv.",
+    "description": "A pipeline to convert file formats between Avro, Parquet & csv.",
+    "parameters": [
+      {
+        "name": "inputFileFormat",
+        "label": "File format of the input files.",
+        "helpText": "File format of the input files. Needs to be either avro, parquet or csv.",
+        "regexes": [
+          "(csv|avro|parquet)"
+        ],
+        "paramType": "TEXT"
+      },
+      {
+        "name": "outputFileFormat",
+        "label": "File format of the output files.",
+        "helpText": "File format of the output files. Needs to be either avro or parquet.",
+        "regexes": [
+          "(avro|parquet)"
+        ],
+        "paramType": "TEXT"
+      },
+      {
+        "name": "inputFileSpec",
+        "label": "The input filepattern to read from.",
+        "helpText": "Cloud storage file pattern glob to read from. ex: gs://your-bucket/path/*.csv",
+        "regexes": [
+          "^gs:\\/\\/[^\\n\\r]+$"
+        ],
+        "paramType": "GCS_READ_FILE"
+      },
+      {
+        "name": "outputBucket",
+        "label": "Output Cloud Storage directory.",
+        "helpText": "Cloud storage directory for writing output files (ex: gs://your-bucket/path/). This value must end in a slash.",
+        "regexes": [
+          "^gs:\\/\\/[^\\n\\r]+$"
+        ],
+        "paramType": "GCS_WRITE_FOLDER"
+      },
+      {
+        "name": "schema",
+        "label": "Path of the avro schema file used for the conversion.",
+        "helpText": "Cloud storage path to the avro schema file (ex: gs://your-bucket/your-path/schema.avsc).",
+        "regexes": [
+          "^gs:\\/\\/[^\\n\\r]+$"
+        ],
+        "paramType": "GCS_READ_FILE"
+      },
+      {
+        "name": "containsHeaders",
+        "label": "Input CSV files contain a header record.",
+        "helpText": "Input CSV files contain a header record (true/false). Default: false. Only required if reading csv files.",
+        "isOptional": true,
+        "regexes": [
+          "(true|false)"
+        ],
+        "paramType": "TEXT"
+      },
+      {
+        "name": "csvFormat",
+        "label": "CSV Format to use for parsing records.",
+        "helpText": "CSV format specification to use for parsing records. Default: Default. See https://commons.apache.org/proper/commons-csv/apidocs/org/apache/commons/csv/CSVFormat.html for more details.",
+        "isOptional": true,
+        "paramType": "TEXT"
+      },
+      {
+        "name": "delimiter",
+        "label": "Column delimiter of the data files.",
+        "helpText": "The column delimiter of the input text files.",
+        "isOptional": true,
+        "paramType": "TEXT"
+      },
+      {
+        "name": "outputFilePrefix",
+        "label": "Output file prefix.",
+        "helpText": "The prefix of the files to write to. Default: output",
+        "isOptional": true,
+        "paramType": "TEXT"
+      },
+      {
+        "name": "numShards",
+        "label": "Number of output shards",
+        "helpText": "The number of output files",
+        "isOptional": true,
+        "regexes": [
+          "^[0-9]+$"
+        ],
+        "paramType": "TEXT"
+      }
+    ]
+  },
+  "sdkInfo": {
+    "language": "JAVA"
+  }
+}

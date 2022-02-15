@@ -1,0 +1,54 @@
+{
+  "name": "Pub/Sub Topic to BigQuery",
+  "description": "Streaming pipeline. Ingests JSON-encoded messages from a Pub/Sub topic, transforms them using a JavaScript user-defined function (UDF), and writes them to a pre-existing BigQuery table as BigQuery elements.",
+  "parameters": [
+    {
+      "name": "inputTopic",
+      "label": "Input Pub/Sub topic",
+      "helpText": "The Pub/Sub topic to read the input from. Ex: projects/your-project-id/topics/your-topic-name",
+      "regexes": [
+        "^projects\\/[^\\n\\r\\/]+\\/topics\\/[^\\n\\r\\/]+$"
+      ],
+      "paramType": "PUBSUB_TOPIC"
+    },
+    {
+      "name": "javascriptTextTransformGcsPath",
+      "label": "JavaScript UDF path in Cloud Storage",
+      "helpText": "The Cloud Storage path pattern for the JavaScript code containing your user-defined functions. Ex: gs://your-bucket/your-transforms/*.js",
+      "isOptional": true,
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "javascriptTextTransformFunctionName",
+      "label": "JavaScript UDF name",
+      "helpText": "The name of the function to call from your JavaScript file. Use only letters, digits, and underscores. Ex: transform_udf1",
+      "isOptional": true,
+      "regexes": [
+        "[a-zA-Z0-9_]+"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "outputTableSpec",
+      "label": "BigQuery output table",
+      "helpText": "The location of the BigQuery table to write the output to. If you reuse an existing table, it will be overwritten. The table\u2019s schema must match the input JSON objects. Ex: your-project:your-dataset.your-table",
+      "regexes": [
+        ".+:.+\\..+"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "outputDeadletterTable",
+      "label": "Table for messages failed to reach the output table(aka. Deadletter table)",
+      "helpText": "Messages failed to reach the output table for all kind of reasons (e.g., mismatched schema, malformed json) are written to this table. If it doesn't exist, it will be created during pipeline execution. If not specified, \"outputTableSpec_error_records\" is used instead. Ex: your-project:your-dataset.your-table-name",
+      "isOptional": true,
+      "regexes": [
+        ".+:.+\\..+"
+      ],
+      "paramType": "TEXT"
+    }
+  ]
+}

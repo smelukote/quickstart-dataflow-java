@@ -1,0 +1,42 @@
+{
+  "name": "Bulk Compress GCS Files",
+  "description": "Batch pipeline. Compresses files on Cloud Storage to a specified location.",
+  "parameters": [
+    {
+      "name": "inputFilePattern",
+      "label": "Input file(s) in Cloud Storage",
+      "helpText": "The input file pattern Dataflow reads from. Ex: gs://your-bucket/uncompressed/*.txt",
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "outputDirectory",
+      "label": "Output directory",
+      "helpText": "The output location Dataflow writes to. Ex: gs://your-bucket/compressed/",
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "GCS_WRITE_FOLDER"
+    },
+    {
+      "name": "outputFailureFile",
+      "label": "Output failure file",
+      "helpText": "The error log output file to use for write failures that occur during compression. Ex: gs://your-bucket/compressed/failed.csv",
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "GCS_WRITE_FILE"
+    },
+    {
+      "name": "compression",
+      "label": "Compression",
+      "helpText": "The compression algorithm used to compress the matched files. Valid algorithms: BZIP2, DEFLATE, GZIP",
+      "regexes": [
+        "(GZIP|BZIP2|DEFLATE)"
+      ],
+      "paramType": "TEXT"
+    }
+  ]
+}

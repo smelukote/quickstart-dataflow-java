@@ -1,0 +1,53 @@
+{
+  "image": "gcr.io/dataflow-templates/2020-07-20-00_rc00/cdc-agg",
+  "metadata": {
+    "name": "Synchronizing CDC data to BigQuery",
+    "description": "A pipeline to synchronize a Change Data Capute streams to BigQuery.",
+    "parameters": [
+      {
+        "name": "inputSubscriptions",
+        "label": "Input subscriptions to the template",
+        "helpText": "A comma-separated list of subscriptions.",
+        "regexes": [
+          "[^/]+"
+        ],
+        "paramType": "TEXT"
+      },
+      {
+        "name": "changeLogDataset",
+        "label": "Output BigQuery dataset for Changelog tables",
+        "helpText": "Name of the BigQuery dataset to keep changelog table data.",
+        "regexes": [
+          ".+"
+        ],
+        "paramType": "TEXT"
+      },
+      {
+        "name": "replicaDataset",
+        "label": "Output BigQuery dataset for replica tables",
+        "helpText": "Name of the BigQuery dataset to keep replica table data.",
+        "regexes": [
+          ".+"
+        ],
+        "paramType": "TEXT"
+      },
+      {
+        "name": "updateFrequencySecs",
+        "label": "Frequency to issue updates to BigQuery tables (seconds).",
+        "helpText": "Comma separated list of fields to select from the table.",
+        "isOptional": true,
+        "paramType": "TEXT"
+      },
+      {
+        "name": "useSingleTopic",
+        "label": "Whether to use a single topic for all MySQL table changes.",
+        "helpText": "Set this to true if you have configured your Debezium connector to publish all table updates to a single topic",
+        "isOptional": true,
+        "paramType": "TEXT"
+      }
+    ]
+  },
+  "sdkInfo": {
+    "language": "JAVA"
+  }
+}

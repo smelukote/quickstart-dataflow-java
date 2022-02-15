@@ -1,0 +1,62 @@
+{
+  "name": "Cloud DLP Data Masking/Tokenization from GCS to BigQuery",
+  "description": "An example pipeline that reads CSV files from Google Cloud Storage, uses Cloud DLP API to mask and tokenize data based on the DLP templates provided and stores output in BigQuery. Note, not all configuration settings are available in this default template. You may need to deploy a custom template to accommodate your specific environment and data needs. More details here: https://cloud.google.com/solutions/de-identification-re-identification-pii-using-cloud-dlp",
+  "parameters": [
+    {
+      "name": "inputFilePattern",
+      "label": "The GCS location of the CSV files you'd like to process",
+      "helpText": "Example: gs://your-bucket/your-files/*.csv",
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "GCS_READ_FILE"
+    },
+    {
+      "name": "datasetName",
+      "label": "BigQuery Dataset to be used. Dataset must exist prior to execution",
+      "helpText": "Example: pii_dataset",
+      "regexes": [
+        "^[^.]*$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "batchSize",
+      "label": "Batch size contents (number of rows) to optimize DLP API call. Total size of the rows must not exceed 512 KB and total cell count must not exceed 50,000. Default batch size is set to 100",
+      "helpText": "Example:1000",
+      "isOptional": true,
+      "regexes": [
+        "^[1-9]+[0-9]*$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "dlpProjectId",
+      "label": "DLP project id to be used for data masking/tokenization",
+      "helpText": "Example:your-dlp-project",
+      "regexes": [
+        "^([a-z0-9\\.]+:)?[a-z0-9][a-z0-9-]{5,29}$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "deidentifyTemplateName",
+      "label": "DLP Deidentify Template to deidentify contents. Create here https://console.cloud.google.com/security/dlp/create/template",
+      "helpText": "Example: projects/your-project-id/deidentifyTemplates/generated_template_id",
+      "regexes": [
+        "^projects\\/[^\\n\\r\\/]+\\/deidentifyTemplates\\/[^\\n\\r\\/]+$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "inspectTemplateName",
+      "label": "DLP Inspect Template to inspect contents",
+      "helpText": "Example: projects/your-project-id/inspectTemplates/generated_template_id",
+      "isOptional": true,
+      "regexes": [
+        "^projects\\/[^\\n\\r\\/]+\\/inspectTemplates\\/[^\\n\\r\\/]+$"
+      ],
+      "paramType": "TEXT"
+    }
+  ]
+}

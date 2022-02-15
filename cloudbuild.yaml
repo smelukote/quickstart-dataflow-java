@@ -8,14 +8,14 @@ steps:
 
 - name: gcr.io/cloud-builders/mvn
   args: ['package', '-Dmaven.test.skip=true', '-Dcheckstyle.skip']
-artifacts:
-  objects:
-    location: "gs://quickstart-dataflow-smdata2022/smdata2022-temp"
-    paths:
-    - "smdata2022-temp"
-
-# substitutions:
-#   _DESTINATION_BUCKET: quickstart-dataflow-smdata2022
-#   _SOURCE_FILES: /java/com/bayer/gcde/src
-options:
-  logging: CLOUD_LOGGING_ONLY
+  
+  #Fifth step compiles and runs the packaged java file
+- name: gcr.io/cloud-builders/mvn
+  args:
+  - --project="involuted-woods-340900"
+  - --region=us-central1
+  - --inputTopic=projects/involuted-woods-340900/topics/mytopic
+  - --output=gs://quickstart-dataflow-involuted-woods-340900/samples/output
+  - --gcpTempLocation=gs://quickstart-dataflow-involuted-woods-340900/samples/temp
+  - --runner=DataflowRunner
+  - --windowSize=2

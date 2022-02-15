@@ -1,0 +1,24 @@
+{
+  "name": "GCS Text File to Pub/Sub (Batch)",
+  "description": "Batch pipeline. Reads records from text files stored in Cloud Storage and publishes them to a Pub/Sub topic.",
+  "parameters": [
+    {
+      "name": "inputFilePattern",
+      "label": "Input file(s) in Cloud Storage",
+      "helpText": "The input file pattern Dataflow reads from. Ex: gs://your-bucket/.../*.txt",
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "outputTopic",
+      "label": "Output Pub/Sub Topic",
+      "helpText": "The name of the topic to which Dataflow should publish data. Ex: projects/your-project-id/topics/your-topic-name",
+      "regexes": [
+        "^projects\\/[^\\n\\r\\/]+\\/topics\\/[^\\n\\r\\/]+$"
+      ],
+      "paramType": "PUBSUB_TOPIC"
+    }
+  ]
+}

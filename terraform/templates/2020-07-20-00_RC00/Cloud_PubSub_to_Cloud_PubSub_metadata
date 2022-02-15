@@ -1,0 +1,38 @@
+{
+  "name": "Pub/Sub to Pub/Sub",
+  "description": "Streaming pipeline. Reads from a Pub/Sub subscription and writes to a Pub/Sub topic. ",
+  "parameters": [
+    {
+      "name": "inputSubscription",
+      "label": "Input Pub/Sub subscription",
+      "helpText": "The Pub/Sub subscription to read the input from. Format: projects/your-project-id/subscriptions/your-subscription-name",
+      "regexes": [
+        "^projects\\/[^\\n\\r\\/]+\\/subscriptions\\/[^\\n\\r\\/]+$"
+      ],
+      "paramType": "PUBSUB_SUBSCRIPTION"
+    },
+    {
+      "name": "outputTopic",
+      "label": "Output Pub/Sub topic",
+      "helpText": "The name of the topic to which Dataflow should publish data. Format: projects/your-project-id/topics/your-topic-name",
+      "regexes": [
+        "^projects\\/[^\\n\\r\\/]+\\/topics\\/[^\\n\\r\\/]+$"
+      ],
+      "paramType": "PUBSUB_TOPIC"
+    },
+    {
+      "name": "filterKey",
+      "label": "Event filter key",
+      "helpText": "Attribute key by which events are filtered. No filters are applied if no key is specified.",
+      "isOptional": true,
+      "paramType": "TEXT"
+    },
+    {
+      "name": "filterValue",
+      "label": "Event filter value",
+      "helpText": "Filter attribute value to use if an event filter key is provided. Accepts a valid Java Regex string as an event filter value. In case a regex is provided, the complete expression should match in order for the message to be filtered. Partial matches (e.g. substring) will not be filtered. A null event filter value is used by default.",
+      "isOptional": true,
+      "paramType": "TEXT"
+    }
+  ]
+}

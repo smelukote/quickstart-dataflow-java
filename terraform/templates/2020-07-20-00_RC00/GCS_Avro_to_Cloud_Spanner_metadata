@@ -1,0 +1,33 @@
+{
+  "name": "Avro Files to Cloud Spanner",
+  "description": "A pipeline to import a Cloud Spanner database from a set of Avro files in GCS.",
+  "parameters": [
+    {
+      "name": "instanceId",
+      "label": "Cloud Spanner instance id",
+      "helpText": "The instance id of the Cloud Spanner database that you want to import to.",
+      "regexes": [
+        "^[a-z0-9\\-]+$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "databaseId",
+      "label": "Cloud Spanner database id",
+      "helpText": "The database id of the Cloud Spanner database that you want to import into (must already exist).",
+      "regexes": [
+        "^[a-z_0-9\\-]+$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "inputDir",
+      "label": "Cloud storage input directory",
+      "helpText": "The GCS path where the Avro files should be imported from.",
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "GCS_READ_FOLDER"
+    }
+  ]
+}

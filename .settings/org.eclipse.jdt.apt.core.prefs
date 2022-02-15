@@ -1,2 +1,7 @@
 eclipse.preferences.version=1
 org.eclipse.jdt.apt.aptEnabled=false
+<<<<<<< HEAD
+=======
+org.eclipse.jdt.apt.genSrcDir=target/generated-sources/annotations
+org.eclipse.jdt.apt.genTestSrcDir=target/generated-test-sources/test-annotations
+>>>>>>> aea67d1721f33344573809c2719fcba910fa08a6

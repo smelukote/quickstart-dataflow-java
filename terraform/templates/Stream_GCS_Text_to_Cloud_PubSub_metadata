@@ -1,0 +1,24 @@
+{
+  "name": "GCS Text File to Pub/Sub (Stream)",
+  "description": "A pipeline that polls every 10 seconds for new text files stored in GCS and outputs each line to a Pub/Sub topic.",
+  "parameters": [
+    {
+      "name": "inputFilePattern",
+      "label": "Input Cloud Storage File(s)",
+      "helpText": "Path of the file pattern glob to read from. ex: gs://your-bucket/path/*.csv",
+      "regexes": [
+        "^gs:\\/\\/[^\\n\\r]+$"
+      ],
+      "paramType": "TEXT"
+    },
+    {
+      "name": "outputTopic",
+      "label": "Output Pub/Sub Topic",
+      "helpText": "The name of the topic which data should be published to. The name should be in the format of projects/your-project-id/topics/your-topic-name.",
+      "regexes": [
+        "^projects\\/[^\\n\\r\\/]+\\/topics\\/[^\\n\\r\\/]+$"
+      ],
+      "paramType": "PUBSUB_TOPIC"
+    }
+  ]
+}
