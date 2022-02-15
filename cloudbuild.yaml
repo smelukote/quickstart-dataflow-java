@@ -2,6 +2,10 @@ steps:
  - name: maven:3-jdk-8
    entrypoint: mvn
    args: ['package','-Dmaven.test.skip=true']
+ 
+ - name: gcr.io/cloud-builders/docker
+   args: ['build', '-t', 'gcr.io/project-id/my_image', '--build-arg=JAR_FILE=target/build-artifact', '.']
+ images: ['gcr.io/involuted-woods-340900/my_image']
 
 # substitutions:
 #   _DESTINATION_BUCKET: quickstart-dataflow-smdata2022
