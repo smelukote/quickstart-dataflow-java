@@ -5,11 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.bayer.gcde</groupId>
-  <artifactId>quickstart-dataflow-java</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <name>quickstart-dataflow-java</name>
-  <description>Cloud Teleport is a collection of Apache piplines for common tasks, 
-    like data movement across databases or batch transoforms on random datasets</description>
+  <artifactId>hello-spring</artifactId>
+  <version>1.0.0</version>
+  <name>hello-spring</name>
+  <description>Demo project for Spring Boot</description>
 
  
   <!-- FIXME change it to the project's website -->
